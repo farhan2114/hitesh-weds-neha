@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'BapuBold';
+  src: url('/fonts/Bapu-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --radius: 0.25rem;
   --background: oklch(97.3% 0.014 88);
@@ -93,7 +101,7 @@
 }
 
 .font-telugu {
-  font-family: 'Suranna', 'Peddana', 'Gautami', 'Nirmala UI', serif;
+  font-family: 'BapuBold', 'Suranna', 'Peddana', 'Gautami', 'Nirmala UI', serif;
 }
 
 .font-script {

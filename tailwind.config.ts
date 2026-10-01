@@ -53,7 +53,7 @@ export default {
         cinzel: ['"Cinzel Decorative"', 'Georgia', 'serif'],
         title: ['"Marcellus"', 'Georgia', 'serif'],
         sans: ['"Karla"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        telugu: ['"Suranna"', '"Peddana"', '"Gautami"', '"Nirmala UI"', 'serif'],
+        telugu: ['"BapuBold"', '"Suranna"', '"Peddana"', '"Gautami"', '"Nirmala UI"', 'serif'],
         script: ['"Great Vibes"', 'cursive'],
       },
       borderRadius: {
