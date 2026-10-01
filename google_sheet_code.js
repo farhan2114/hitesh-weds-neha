@@ -22,6 +22,21 @@
 var SHEET_NAME = 'Wedding RSVPs';
 
 function setupSheet(sheet) {
+  if (!sheet) {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    sheet = ss.getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      var sheets = ss.getSheets();
+      if (sheets.length === 1 && sheets[0].getName() === 'Sheet1') {
+        sheets[0].setName(SHEET_NAME);
+        sheet = sheets[0];
+      } else {
+        sheet = ss.getActiveSheet();
+      }
+    }
+  }
+  if (!sheet) return;
+
   if (sheet.getLastRow() === 0) {
     // 1. Dashboard Title (Row 1)
     sheet.getRange('A1:M1').merge();
