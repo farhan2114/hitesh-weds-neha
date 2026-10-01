@@ -47,16 +47,16 @@ export const MeetCoupleSection: React.FC = () => {
               <h3 className="mt-2.5 font-display text-3xl sm:text-4xl text-foreground">
                 {couple.groom}
               </h3>
+              {couple.groomParentsNote && (
+                <p className="mt-1.5 text-xs sm:text-sm font-sans tracking-wide text-gold-deep font-medium">
+                  {couple.groomParentsNote}
+                </p>
+              )}
               <div className="rule-gold mx-auto mt-4 w-16" />
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground font-serif italic max-w-sm">
                 {couple.groomDescription ||
                   'A gentleman of steadfast character, quiet strength, and genuine kindness. Grounded in wisdom and guided by warmth, his caring nature and unwavering dedication make him the perfect companion and partner for life.'}
               </p>
-              {couple.groomParentsNote && (
-                <p className="mt-4 text-xs leading-normal tracking-wide text-foreground/80 font-medium max-w-xs">
-                  {couple.groomParentsNote}
-                </p>
-              )}
             </div>
           </RevealOnScroll>
 
@@ -69,16 +69,16 @@ export const MeetCoupleSection: React.FC = () => {
               <h3 className="mt-2.5 font-display text-3xl sm:text-4xl text-foreground">
                 {couple.bride}
               </h3>
+              {couple.brideParentsNote && (
+                <p className="mt-1.5 text-xs sm:text-sm font-sans tracking-wide text-gold-deep font-medium">
+                  {couple.brideParentsNote}
+                </p>
+              )}
               <div className="rule-gold mx-auto mt-4 w-16" />
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground font-serif italic max-w-sm">
                 {couple.brideDescription ||
                   'A soul of graceful warmth and radiant joy, her laughter lights up every room she enters. With a generous heart and spirited smile, she steps into this new chapter with boundless love, poise, and devotion to family.'}
               </p>
-              {couple.brideParentsNote && (
-                <p className="mt-4 text-xs leading-normal tracking-wide text-foreground/80 font-medium max-w-xs">
-                  {couple.brideParentsNote}
-                </p>
-              )}
             </div>
           </RevealOnScroll>
         </div>

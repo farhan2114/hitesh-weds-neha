@@ -14,14 +14,14 @@ export const weddingConfig = {
     hashtag: '#HiteshWedsNeha',
 
     groomRole: 'The Groom',
-    groomParentsNote: 'Son of Adusumalli SrinivasaRao & Padmavathi',
+    groomParentsNote: 'S/o: Adusumalli SrinivasaRao & Padmavathi',
     groomDescription:
       'A gentleman of steadfast character, quiet strength, and genuine kindness. Grounded in wisdom and guided by warmth, his caring nature and unwavering dedication make him the perfect companion and partner for life.',
     groomPhoto: '/client-images/groom.jpg',
     groomPhotoAlt: 'Hitesh, the groom',
 
     brideRole: 'The Bride',
-    brideParentsNote: 'Daughter of Ramachander Srinivas & Madhuri Diwan',
+    brideParentsNote: 'D/o: Ramachander Srinivas & Madhuri Diwan',
     brideDescription:
       'A soul of graceful warmth and radiant joy, her laughter lights up every room she enters. With a generous heart and spirited smile, she steps into this new chapter with boundless love, poise, and devotion to family.',
     bridePhoto: '/client-images/bride.jpg',
@@ -62,13 +62,15 @@ Hitesh & Neha`,
   // 4. VENUE & GOOGLE MAPS LOCATION
   // -------------------------------------------------------------
   venue: {
-    name: 'Indian Cultural Center of South Jersey',
+    name: 'Indian Cultural Centre Of South Jersey',
     city: 'Marlton, New Jersey',
     cityName: 'Marlton',
+    address: '820 NJ-73, Marlton, New Jersey 08053',
     locationUnderMap: 'Marlton · New Jersey · 18 . 12 . 2026',
     description:
-      'Follow the golden path to the Indian Cultural Center of South Jersey, where our families will gather to celebrate love, togetherness, and a beautiful new beginning.',
-    mapsSearchUrl: 'https://maps.app.goo.gl/1ijyBLo5g4rztGseA',
+      'Follow the golden path to the Indian Cultural Centre Of South Jersey, where our families will gather to celebrate love, togetherness, and a beautiful new beginning.',
+    mapsSearchUrl:
+      'https://www.google.com/maps/search/?api=1&query=Indian+Cultural+Center+of+South+Jersey,+820+NJ-73,+Marlton,+NJ+08053',
     mapsEmbedUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.4789917748626!2d-74.92050792401626!3d39.8635074715339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c1330a7015403f%3A0x98b7d3f2d86de76f!2sIndian%20Cultural%20Center%20of%20South%20Jersey!5e0!3m2!1sen!2sin!4v1790787135035!5m2!1sen!2sin',
   },
@@ -92,9 +94,10 @@ Hitesh & Neha`,
       tagline: 'A splash of sun, laughter & sacred turmeric',
       day: 'Thursday, 17 Dec',
       time: '11:00 AM onwards',
-      place: 'Family Home, Cherry Hill',
-      address: 'Cherry Hill, New Jersey',
-      mapsUrl: 'https://maps.app.goo.gl/1ijyBLo5g4rztGseA',
+      place: 'Family Residence, Cherry Hill',
+      address: '1018 Edgemoor Road, Cherry Hill Township, NJ 08034',
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=1018+Edgemoor+Road,+Cherry+Hill+Township,+NJ+08034',
       image: '/client-images/event-haldi.jpg',
       note: 'Haldi celebrations with family and loved ones',
       funLines:
@@ -104,12 +107,13 @@ Hitesh & Neha`,
     {
       id: 'wedding',
       name: 'Marriage',
-      tagline: 'The sacred Sumuhurtham & holy wedding vows',
+      tagline: 'Wedding Procession & The Sacred Sumuhurtham',
       day: 'Friday, 18 Dec',
-      time: '5:30 PM onwards · Sumuhurtham 7:05 PM',
-      place: 'Indian Cultural Center of South Jersey',
-      address: '130 Old Marlton Pike, Marlton, NJ 08053',
-      mapsUrl: 'https://maps.app.goo.gl/1ijyBLo5g4rztGseA',
+      time: 'Wedding Procession: 5:30 PM onwards · Sumuhurtham: 07:05 PM',
+      place: 'Indian Cultural Centre Of South Jersey',
+      address: '820 NJ-73, Marlton, New Jersey 08053',
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=Indian+Cultural+Center+of+South+Jersey,+820+NJ-73,+Marlton,+NJ+08053',
       image: '/client-images/event-wedding.jpg',
       note: 'Wedding procession followed by the marriage ceremony',
       funLines:
@@ -122,9 +126,10 @@ Hitesh & Neha`,
       tagline: 'An evening of music, dance, cocktails & celebrations',
       day: 'Saturday, 19 Dec',
       time: '6:00 PM onwards',
-      place: 'Indian Cultural Center of South Jersey',
-      address: '130 Old Marlton Pike, Marlton, NJ 08053',
-      mapsUrl: 'https://maps.app.goo.gl/1ijyBLo5g4rztGseA',
+      place: 'Indian Cultural Centre Of South Jersey',
+      address: '820 NJ-73, Marlton, New Jersey 08053',
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=Indian+Cultural+Center+of+South+Jersey,+820+NJ-73,+Marlton,+NJ+08053',
       image: '/client-images/event-sangeet.jpg',
       note: 'An evening of music, dance, cocktails and celebrations',
       funLines:
@@ -137,9 +142,10 @@ Hitesh & Neha`,
       tagline: 'Sacred prayers, divine blessings & auspicious feast',
       day: 'Sunday, 20 Dec',
       time: '11:00 AM onwards',
-      place: 'Piscataway, New Jersey',
-      address: 'Piscataway, New Jersey',
-      mapsUrl: 'https://maps.app.goo.gl/1ijyBLo5g4rztGseA',
+      place: 'Family Residence, Piscataway',
+      address: '348 Lunar Road, Piscataway, New Jersey 08854',
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=348+Lunar+Road,+Piscataway,+NJ+08854',
       image: '/client-images/event-reception.jpg',
       note: 'Satyanarayana Vratham and family celebrations',
       funLines:

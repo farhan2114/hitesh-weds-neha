@@ -21,26 +21,54 @@
 
 var SHEET_NAME = 'Wedding RSVPs';
 
-function setupSheet(sheet) {
-  if (!sheet) {
-    var ss = SpreadsheetApp.getActiveSpreadsheet();
-    sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) {
-      sheet = ss.getActiveSheet();
-      try {
-        sheet.setName(SHEET_NAME);
-      } catch (err) {}
+/**
+ * =========================================================================
+ * 🧹 ONE-CLICK CLEANUP & FORMAT FUNCTION:
+ * Run this function from the toolbar dropdown to immediately clean up
+ * any messy overlapping text, preserve all genuine guest RSVPs, and format
+ * the entire sheet into a pristine dashboard!
+ * =========================================================================
+ */
+function cleanAndFormatSheet() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(SHEET_NAME) || ss.getActiveSheet();
+  try {
+    sheet.setName(SHEET_NAME);
+  } catch (err) {}
+
+  // 1. Collect all genuine guest responses
+  var realSubmissions = [];
+  var lastRow = sheet.getLastRow();
+  if (lastRow >= 6) {
+    var rawValues = sheet.getRange(6, 1, lastRow - 5, 13).getValues();
+    for (var i = 0; i < rawValues.length; i++) {
+      var row = rawValues[i];
+      var name = String(row[1] || '').trim();
+      var email = String(row[2] || '').trim();
+      // Keep real submissions (contains email or valid guest name)
+      if (email.indexOf('@') !== -1 || (name && name !== 'Celebration Event' && name !== '0' && name !== 'Total Guests (Adults + Kids)')) {
+        realSubmissions.push(row);
+      }
     }
   }
-  if (!sheet) return;
 
-  // 1. Dashboard Title (Row 1)
+  // 2. Clear entire sheet content & formatting
+  sheet.clear();
+  sheet.clearFormats();
+
+  // 3. Row 1: Merged Title Header
   sheet.getRange('A1:M1').merge();
   sheet.getRange('A1').setValue('💍 HITESH & NEHA WEDDING — LIVE RSVP & EVENT TOTALS DASHBOARD');
-  sheet.getRange('A1').setBackground('#8B1E3F').setFontColor('#FFFFFF').setFontWeight('bold').setFontSize(13).setHorizontalAlignment('center');
-  sheet.setRowHeight(1, 36);
+  sheet.getRange('A1')
+    .setBackground('#8B1E3F')
+    .setFontColor('#FFFFFF')
+    .setFontWeight('bold')
+    .setFontSize(13)
+    .setHorizontalAlignment('center')
+    .setVerticalAlignment('middle');
+  sheet.setRowHeight(1, 38);
 
-  // 2. Dashboard Metric Labels (Row 2)
+  // 4. Row 2: Metric Headers
   var metricHeaders = [
     'Total RSVPs',
     'Total Adults',
@@ -50,41 +78,45 @@ function setupSheet(sheet) {
     'Marriage Guests',
     'Sangeet Guests',
     'Vratham Guests',
-    '',
-    '',
-    '',
-    '',
-    ''
+    '', '', '', '', ''
   ];
   sheet.getRange(2, 1, 1, 13).setValues([metricHeaders]);
-  sheet.getRange('A2:H2').setBackground('#D4AF37').setFontColor('#FFFFFF').setFontWeight('bold').setHorizontalAlignment('center');
+  sheet.getRange('A2:H2')
+    .setBackground('#D4AF37')
+    .setFontColor('#FFFFFF')
+    .setFontWeight('bold')
+    .setFontSize(10)
+    .setHorizontalAlignment('center')
+    .setVerticalAlignment('middle');
   sheet.setRowHeight(2, 28);
 
-  // 3. Live Dashboard Formulas (Row 3)
+  // 5. Row 3: Live Dashboard Formulas
   var formulas = [
-    '=IF(COUNTA(B6:B)=0, 0, COUNTA(B6:B))',
-    '=IF(COUNTA(B6:B)=0, 0, SUM(D6:D))',
-    '=IF(COUNTA(B6:B)=0, 0, SUM(E6:E))',
-    '=IF(COUNTA(B6:B)=0, 0, SUM(F6:F))',
-    '=IF(COUNTA(B6:B)=0, 0, SUMIF(G6:G, "Yes", F6:F))',
-    '=IF(COUNTA(B6:B)=0, 0, SUMIF(H6:H, "Yes", F6:F))',
-    '=IF(COUNTA(B6:B)=0, 0, SUMIF(I6:I, "Yes", F6:F))',
-    '=IF(COUNTA(B6:B)=0, 0, SUMIF(J6:J, "Yes", F6:F))',
-    '',
-    '',
-    '',
-    '',
-    ''
+    '=COUNTA(B6:B)',
+    '=SUM(D6:D)',
+    '=SUM(E6:E)',
+    '=SUM(F6:F)',
+    '=SUMIF(G6:G, "Yes", F6:F)',
+    '=SUMIF(H6:H, "Yes", F6:F)',
+    '=SUMIF(I6:I, "Yes", F6:F)',
+    '=SUMIF(J6:J, "Yes", F6:F)',
+    '', '', '', '', ''
   ];
   sheet.getRange(3, 1, 1, 13).setValues([formulas]);
-  sheet.getRange('A3:H3').setFontWeight('bold').setFontSize(12).setHorizontalAlignment('center').setBackground('#FFF9E6');
-  sheet.setRowHeight(3, 30);
+  sheet.getRange('A3:H3')
+    .setFontWeight('bold')
+    .setFontSize(13)
+    .setFontColor('#333333')
+    .setHorizontalAlignment('center')
+    .setVerticalAlignment('middle')
+    .setBackground('#FFF9E6')
+    .setBorder(true, true, true, true, true, true, '#D4AF37', SpreadsheetApp.BorderStyle.SOLID);
+  sheet.setRowHeight(3, 32);
 
-  // 4. Blank divider (Row 4)
-  sheet.getRange('A4:M4').clearContent().setBackground('#FFFFFF');
-  sheet.setRowHeight(4, 15);
+  // 6. Row 4: Spacer
+  sheet.setRowHeight(4, 14);
 
-  // 5. All Guest Response Fields Header (Row 5)
+  // 7. Row 5: Field Headers
   var fieldHeaders = [
     'Timestamp',
     'Name',
@@ -105,14 +137,53 @@ function setupSheet(sheet) {
     .setBackground('#8B1E3F')
     .setFontColor('#FFFFFF')
     .setFontWeight('bold')
-    .setHorizontalAlignment('center');
+    .setFontSize(10)
+    .setHorizontalAlignment('center')
+    .setVerticalAlignment('middle');
   sheet.setRowHeight(5, 34);
 
-  // Freeze top 5 rows so Dashboard and Headers are always visible
+  // 8. Re-insert Clean Guest Submissions
+  if (realSubmissions.length > 0) {
+    sheet.getRange(6, 1, realSubmissions.length, 13).setValues(realSubmissions);
+    sheet.getRange(6, 1, realSubmissions.length, 13).setVerticalAlignment('middle');
+    sheet.getRange(6, 4, realSubmissions.length, 7).setHorizontalAlignment('center');
+  }
+
+  // Freeze top 5 rows
   sheet.setFrozenRows(5);
 
-  // Auto-resize columns
-  sheet.autoResizeColumns(1, 13);
+  // Set generous column widths
+  sheet.setColumnWidth(1, 160); // Timestamp
+  sheet.setColumnWidth(2, 140); // Name
+  sheet.setColumnWidth(3, 190); // Mail ID
+  sheet.setColumnWidth(4, 75);  // Adults
+  sheet.setColumnWidth(5, 75);  // Kids
+  sheet.setColumnWidth(6, 95);  // Total Guests
+  sheet.setColumnWidth(7, 85);  // Haldi
+  sheet.setColumnWidth(8, 85);  // Marriage
+  sheet.setColumnWidth(9, 145); // Sangeet
+  sheet.setColumnWidth(10, 155); // Vratham
+  sheet.setColumnWidth(11, 240); // Summary
+  sheet.setColumnWidth(12, 260); // Blessings
+  sheet.setColumnWidth(13, 130); // ID
+}
+
+function setupSheet(sheet) {
+  if (!sheet) {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    sheet = ss.getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      sheet = ss.getActiveSheet();
+      try {
+        sheet.setName(SHEET_NAME);
+      } catch (err) {}
+    }
+  }
+  if (!sheet) return;
+
+  if (sheet.getLastRow() < 5) {
+    cleanAndFormatSheet();
+  }
 }
 
 function doPost(e) {
