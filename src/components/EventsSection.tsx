@@ -695,8 +695,8 @@ export const EventsSection: React.FC = () => {
                 <div className="pointer-events-none absolute inset-2 sm:inset-3.5 rounded-[18px] sm:rounded-[30px] border border-[#D4AF37]/50 z-20" />
 
                 {/* Left-Aligned Seamless Text & Action Column */}
-                <div className="relative z-30 flex h-full items-center pl-4 xs:pl-6 sm:pl-12 md:pl-16">
-                  <div className="flex flex-col items-center justify-center text-center w-[150px] xs:w-[175px] sm:w-[260px] md:w-[290px] transition-transform duration-300 group-hover:scale-[1.02]">
+                <div className="relative z-30 flex h-full items-center pl-3.5 xs:pl-5 sm:pl-10 md:pl-14">
+                  <div className="flex flex-col items-center justify-center text-center w-[165px] xs:w-[195px] sm:w-[310px] md:w-[350px] max-w-[56%] sm:max-w-[48%] transition-transform duration-300 group-hover:scale-[1.02]">
                     {/* Top Traditional Motif Icon */}
                     <div className="mb-0.5 sm:mb-2 transition-transform duration-300 group-hover:scale-110">
                       {theme.topIcon}
@@ -704,7 +704,13 @@ export const EventsSection: React.FC = () => {
 
                     {/* Traditional Stylish Title */}
                     <h3
-                      className={`font-traditional italic font-bold text-3xl xs:text-4xl sm:text-6xl md:text-7xl tracking-tight ${theme.titleColor} ${theme.titleShadow}`}
+                      className={`font-traditional italic font-bold tracking-tight ${theme.titleColor} ${theme.titleShadow} ${
+                        event.name.length > 18
+                          ? 'text-lg xs:text-xl min-[400px]:text-2xl sm:text-4xl md:text-5xl leading-tight'
+                          : event.name.length > 10
+                          ? 'text-xl xs:text-2xl min-[400px]:text-3xl sm:text-5xl md:text-6xl leading-tight'
+                          : 'text-3xl xs:text-4xl sm:text-6xl md:text-7xl leading-none'
+                      } max-w-full break-words`}
                     >
                       {event.name}
                     </h3>
@@ -801,7 +807,7 @@ export const EventsSection: React.FC = () => {
                 <span className="rounded-full bg-gold/90 px-3 py-0.5 font-serif text-[10px] uppercase tracking-[0.25em] text-[#2A0810] font-semibold">
                   Celebration Details
                 </span>
-                <h3 className="mt-2 font-traditional italic text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-md">
+                <h3 className="mt-2 font-traditional italic text-2xl min-[400px]:text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-md break-words">
                   {activeModalEvent.name}
                 </h3>
                 <p className="mt-1 font-title text-xs sm:text-sm text-paper/85">
