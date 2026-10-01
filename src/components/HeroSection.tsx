@@ -187,8 +187,8 @@ export const HeroSection: React.FC = () => {
 
       {/* Main Invitation Card */}
       <div className="relative z-20 w-full px-4 [perspective:1400px]">
-        <div className="invite-card mx-auto max-w-lg opacity-0">
-          <div className="paper-card arch-top relative px-4 py-6 sm:px-9 sm:py-8 text-center shadow-2xl">
+        <div className="invite-card mx-auto max-w-xl sm:max-w-2xl opacity-0">
+          <div className="paper-card arch-top relative px-6 py-9 min-[400px]:px-8 min-[400px]:py-11 sm:px-14 sm:py-14 text-center shadow-2xl">
             <img
               src={assets.mandalaGold}
               alt=""
@@ -197,23 +197,23 @@ export const HeroSection: React.FC = () => {
               height="1024"
               className="pointer-events-none absolute -top-12 left-1/2 w-24 -translate-x-1/2 opacity-55 sm:-top-16 sm:w-28"
             />
-            <p className="invite-line eyebrow mt-3 sm:mt-4 text-[0.62rem] sm:text-[0.68rem]">{weddingData.dateShort}</p>
-            <div className="invite-line mx-auto mt-3 max-w-sm text-center">
-              <p className="font-title text-[0.7rem] sm:text-xs uppercase tracking-[0.24em] text-gold-deep font-semibold">
+            <p className="invite-line eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs">{weddingData.dateShort}</p>
+            <div className="invite-line mx-auto mt-4 sm:mt-5 max-w-md text-center">
+              <p className="font-title text-[0.75rem] sm:text-sm uppercase tracking-[0.24em] text-gold-deep font-semibold">
                 {weddingConfig.invitation.familyTitle || 'The Adusumalli Family'}
               </p>
-              <p className="mt-1 font-serif italic text-xs sm:text-sm text-foreground/80">
+              <p className="mt-2 font-serif italic text-xs sm:text-[0.95rem] text-foreground/80">
                 Cordially Invites You to Celebrate the Wedding of
               </p>
             </div>
-            <h1 className="invite-line mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 font-script text-4xl min-[360px]:text-5xl min-[480px]:text-6xl sm:text-7xl md:text-8xl leading-[1.15] text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)] break-words">
+            <h1 className="invite-line mt-6 sm:mt-8 mb-4 sm:mb-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-script text-5xl min-[360px]:text-6xl min-[480px]:text-7xl sm:text-8xl md:text-9xl leading-[1.2] text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)] break-words">
               <span>{weddingData.groom}</span>
-              <span className="font-title text-lg sm:text-2xl md:text-3xl align-middle text-[#8B1E3F]">&amp;</span>
+              <span className="font-title text-xl sm:text-3xl md:text-4xl align-middle text-[#8B1E3F]">&amp;</span>
               <span>{weddingData.bride}</span>
             </h1>
-            <div className="invite-line rule-gold mx-auto my-3 sm:my-3.5 w-1/2" />
-            <p className="invite-line font-title text-sm sm:text-base tracking-wide text-foreground/90">{weddingData.dateLabel}</p>
-            <p className="invite-line mt-0.5 text-xs sm:text-sm text-muted-foreground">
+            <div className="invite-line rule-gold mx-auto my-5 sm:my-6 w-3/5 max-w-xs" />
+            <p className="invite-line font-title text-base sm:text-lg tracking-wide text-foreground/90">{weddingData.dateLabel}</p>
+            <p className="invite-line mt-1.5 text-xs sm:text-sm text-muted-foreground">
               {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
             </p>
 
@@ -230,7 +230,7 @@ export const HeroSection: React.FC = () => {
                 }
               }}
               aria-label="Scroll down to invitation details"
-              className="invite-line group mt-4 sm:mt-5 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
+              className="invite-line group mt-7 sm:mt-9 flex flex-col items-center gap-1.5 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
             >
               <span className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-[#4A1521] font-bold -mr-[0.26em] select-none text-center animate-scroll-blink">
                 Scroll Down
@@ -288,7 +288,7 @@ export const HeroSection: React.FC = () => {
               pointerEvents: started ? 'none' : 'auto',
             }}
           >
-            <div className="paper-card arch-top relative flex flex-col items-center px-6 py-9 text-center sm:px-14 sm:py-14 w-[85%] max-w-[320px] sm:max-w-sm border border-gold/50 shadow-2xl">
+            <div className="paper-card arch-top relative flex flex-col items-center px-7 py-10 text-center sm:px-14 sm:py-16 w-[90%] max-w-[360px] sm:max-w-md border border-gold/50 shadow-2xl">
               {/* Mandala: spins centered above card */}
               <div className="pointer-events-none absolute -top-11 sm:-top-14 left-1/2 -translate-x-1/2">
                 <img
@@ -300,17 +300,17 @@ export const HeroSection: React.FC = () => {
               </div>
 
               {/* Date */}
-              <p className="eyebrow mt-5 sm:mt-6 text-[0.62rem] text-gold-deep">{weddingData.dateShort}</p>
+              <p className="eyebrow mt-5 sm:mt-6 text-[0.66rem] sm:text-xs text-gold-deep">{weddingData.dateShort}</p>
 
               {/* Names */}
-              <h2 className="mt-2.5 sm:mt-3 flex flex-wrap items-center justify-center gap-x-2.5 font-script text-3xl min-[360px]:text-4xl sm:text-5xl md:text-6xl leading-tight text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)]">
+              <h2 className="mt-4 sm:mt-5 mb-2 sm:mb-3 flex flex-wrap items-center justify-center gap-x-2.5 font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl leading-tight text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)]">
                 <span>{weddingData.groom}</span>
-                <span className="font-title text-base sm:text-xl text-[#8B1E3F]">&amp;</span>
+                <span className="font-title text-lg sm:text-2xl text-[#8B1E3F]">&amp;</span>
                 <span>{weddingData.bride}</span>
               </h2>
 
               {/* Divider */}
-              <div className="rule-gold mx-auto my-5 sm:my-6 w-24 sm:w-32 opacity-70" />
+              <div className="rule-gold mx-auto my-5 sm:my-6 w-28 sm:w-36 opacity-70" />
 
               {/* Tap to begin */}
               <button

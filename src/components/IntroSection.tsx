@@ -11,12 +11,12 @@ export const IntroSection: React.FC = () => {
       <Ornament variant="gold" className="-right-6 bottom-8 w-32 -rotate-12 sm:w-44" />
 
       <RevealOnScroll>
-        <p className="font-telugu text-xl sm:text-3xl text-gold-deep tracking-wide font-normal drop-shadow-sm">
+        <p className="font-telugu text-2xl sm:text-3xl md:text-4xl text-gold-deep tracking-normal font-normal drop-shadow-sm">
           {weddingConfig.invitation.sanskritMantra || 'ఓం శ్రీ గణేశాయ నమః'}
         </p>
         
         <div className="mx-auto mt-6 max-w-2xl text-center space-y-3">
-          <p className="font-telugu text-xl sm:text-3xl text-foreground/90 leading-relaxed font-normal">
+          <p className="font-telugu text-2xl sm:text-3xl md:text-4xl text-foreground/90 leading-relaxed font-normal">
             {weddingConfig.invitation.invitationLine || 'నూతన జీవితానికి నాంది పలుకుతూ...'}
           </p>
           <h2 className="font-display text-4xl sm:text-6xl text-gold-foil animate-foil pt-1">

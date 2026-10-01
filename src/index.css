@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: 'NTR';
+  src: url('/fonts/ntr.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'BapuBold';
   src: url('/fonts/Bapu-Bold.ttf') format('truetype');
   font-weight: normal;
@@ -101,7 +109,7 @@
 }
 
 .font-telugu {
-  font-family: 'BapuBold', 'Suranna', 'Peddana', 'Gautami', 'Nirmala UI', serif;
+  font-family: 'NTR', 'LakkiReddy', 'BapuBold', 'Suranna', 'Peddana', 'Gautami', 'Nirmala UI', serif;
 }
 
 .font-script {
