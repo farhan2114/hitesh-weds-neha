@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { weddingConfig } from '../wedding.config';
 
 export interface BlessingItem {
   id: string;
@@ -14,6 +15,7 @@ const SUPABASE_KEY = 'sb_publishable_7USKYo1sBAT7p3_kqWdrqg_RCxNm3yd';
 export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export const GOOGLE_SHEET_WEBHOOK_URL =
+  weddingConfig.rsvp.googleSheetWebhookUrl ||
   'https://script.google.com/macros/s/AKfycbz9ar1L74KCKJgym2fztj8CGbptrG807JaMgYu3wMTzIhLVxFzLUUy3JKDJBkZkakP7/exec';
 
 export interface RsvpPayload {
@@ -36,7 +38,7 @@ export interface RsvpPayload {
 }
 
 export async function saveRsvpToGoogleSheet(payload: RsvpPayload): Promise<void> {
-  const webhookUrl = GOOGLE_SHEET_WEBHOOK_URL;
+  const webhookUrl = weddingConfig.rsvp.googleSheetWebhookUrl || GOOGLE_SHEET_WEBHOOK_URL;
   if (!webhookUrl) return;
 
   try {
