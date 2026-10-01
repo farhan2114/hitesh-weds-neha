@@ -43,10 +43,10 @@ export const GratitudeSection: React.FC = () => {
             <p className="eyebrow mt-7">With gratitude from both families</p>
             <h2 className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-display text-2xl min-[360px]:text-3xl min-[480px]:text-5xl sm:text-7xl leading-[1.08] break-words">
               <span className="text-gold-foil animate-foil">{weddingData.groom}</span>
-              <span className="mx-1.5 align-middle font-title text-lg sm:text-3xl text-maroon">&amp;</span>
+              <span className="mx-1.5 align-middle font-title text-lg sm:text-3xl text-[#F3E3C0]">&amp;</span>
               <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
             </h2>
-            <p className="mt-7 font-title text-sm uppercase tracking-[0.32em] text-maroon sm:text-base">
+            <p className="mt-7 font-title text-sm uppercase tracking-[0.32em] text-[#F3E3C0] sm:text-base font-semibold">
               Thank you for blessing us
             </p>
             <img
@@ -56,17 +56,17 @@ export const GratitudeSection: React.FC = () => {
               loading="lazy"
               className="mx-auto mt-6 w-full max-w-sm opacity-90"
             />
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-[#FFFDF5]">
               Your presence, prayers and affection make this beginning complete. We invite you once again to join us at{' '}
               {weddingData.venue}, {weddingData.city} on {weddingData.dateLabel}.
             </p>
             <img
               src={assets.coupleNamaste}
-              alt="Illustration of Aarthi and Nikhil greeting guests with folded hands"
+              alt="Illustration of greeting guests with folded hands"
               loading="lazy"
               className="mx-auto mt-10 w-48 sm:w-60"
             />
-            <p className="mt-8 font-telugu text-2xl sm:text-3xl md:text-4xl text-gold-deep font-normal leading-relaxed drop-shadow-sm">
+            <p className="mt-8 font-telugu text-2xl sm:text-3xl md:text-4xl text-[#F3E3C0] font-normal leading-relaxed drop-shadow-sm">
               {weddingData.familyLine || 'మీ ఆశీస్సులే మా నూతన జీవితానికి తొలి అడుగు'}
             </p>
             <p className="mt-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">

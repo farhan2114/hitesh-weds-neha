@@ -197,23 +197,23 @@ export const HeroSection: React.FC = () => {
               height="1024"
               className="pointer-events-none absolute -top-12 left-1/2 w-24 -translate-x-1/2 opacity-55 sm:-top-16 sm:w-28"
             />
-            <p className="invite-line eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs">{weddingData.dateShort}</p>
+            <p className="invite-line eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs text-[#F3E3C0]">{weddingData.dateShort}</p>
             <div className="invite-line mx-auto mt-4 sm:mt-5 max-w-md text-center">
-              <p className="font-title text-[0.75rem] sm:text-sm uppercase tracking-[0.24em] text-gold-deep font-semibold">
+              <p className="font-title text-[0.75rem] sm:text-sm uppercase tracking-[0.24em] text-[#F3E3C0] font-semibold">
                 {weddingConfig.invitation.familyTitle || 'The Adusumalli Family'}
               </p>
-              <p className="mt-2 font-serif italic text-xs sm:text-[0.95rem] text-foreground/80">
+              <p className="mt-2 font-serif italic text-xs sm:text-[0.95rem] text-[#FFFDF5]">
                 Cordially Invites You to Celebrate the Wedding of
               </p>
             </div>
-            <h1 className="invite-line mt-6 sm:mt-8 mb-4 sm:mb-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-script text-5xl min-[360px]:text-6xl min-[480px]:text-7xl sm:text-8xl md:text-9xl leading-[1.2] text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)] break-words">
+            <h1 className="invite-line mt-6 sm:mt-8 mb-4 sm:mb-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-script text-5xl min-[360px]:text-6xl min-[480px]:text-7xl sm:text-8xl md:text-9xl leading-[1.2] text-[#FFFDF5] font-normal drop-shadow-[0_2px_4px_rgba(59,31,20,0.5)] break-words">
               <span>{weddingData.groom}</span>
-              <span className="font-title text-xl sm:text-3xl md:text-4xl align-middle text-[#8B1E3F]">&amp;</span>
+              <span className="font-title text-xl sm:text-3xl md:text-4xl align-middle text-[#F3E3C0]">&amp;</span>
               <span>{weddingData.bride}</span>
             </h1>
             <div className="invite-line rule-gold mx-auto my-5 sm:my-6 w-3/5 max-w-xs" />
-            <p className="invite-line font-title text-base sm:text-lg tracking-wide text-foreground/90">{weddingData.dateLabel}</p>
-            <p className="invite-line mt-1.5 text-xs sm:text-sm text-muted-foreground">
+            <p className="invite-line font-title text-base sm:text-lg tracking-wide text-[#FFFDF5]">{weddingData.dateLabel}</p>
+            <p className="invite-line mt-1.5 text-xs sm:text-sm text-[#F3E3C0]">
               {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
             </p>
 
@@ -232,11 +232,11 @@ export const HeroSection: React.FC = () => {
               aria-label="Scroll down to invitation details"
               className="invite-line group mt-7 sm:mt-9 flex flex-col items-center gap-1.5 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
             >
-              <span className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-[#4A1521] font-bold -mr-[0.26em] select-none text-center animate-scroll-blink">
+              <span className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-[#FFFDF5] font-bold -mr-[0.26em] select-none text-center animate-scroll-blink">
                 Scroll Down
               </span>
               <div className="animate-arrow-down flex items-center justify-center">
-                <ChevronDown className="size-4 sm:size-5 text-[#8A6D3B] stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(218,165,32,0.5)] group-hover:text-[#4A1521] transition-colors" />
+                <ChevronDown className="size-4 sm:size-5 text-[#F3E3C0] stroke-[2.5] drop-shadow-[0_1px_2px_rgba(59,31,20,0.6)] drop-shadow-[0_0_8px_rgba(243,227,192,0.6)] group-hover:text-[#FFFDF5] transition-colors" />
               </div>
             </a>
           </div>
@@ -300,12 +300,12 @@ export const HeroSection: React.FC = () => {
               </div>
 
               {/* Date */}
-              <p className="eyebrow mt-5 sm:mt-6 text-[0.66rem] sm:text-xs text-gold-deep">{weddingData.dateShort}</p>
+              <p className="eyebrow mt-5 sm:mt-6 text-[0.66rem] sm:text-xs text-[#F3E3C0]">{weddingData.dateShort}</p>
 
               {/* Names */}
-              <h2 className="mt-4 sm:mt-5 mb-2 sm:mb-3 flex flex-wrap items-center justify-center gap-x-2.5 font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl leading-tight text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)]">
+              <h2 className="mt-4 sm:mt-5 mb-2 sm:mb-3 flex flex-wrap items-center justify-center gap-x-2.5 font-script text-4xl min-[360px]:text-5xl sm:text-6xl md:text-7xl leading-tight text-[#FFFDF5] font-normal drop-shadow-[0_2px_4px_rgba(59,31,20,0.5)]">
                 <span>{weddingData.groom}</span>
-                <span className="font-title text-lg sm:text-2xl text-[#8B1E3F]">&amp;</span>
+                <span className="font-title text-lg sm:text-2xl text-[#F3E3C0]">&amp;</span>
                 <span>{weddingData.bride}</span>
               </h2>
 
@@ -317,15 +317,14 @@ export const HeroSection: React.FC = () => {
                 type="button"
                 onClick={handleStart}
                 aria-label="Tap to open the invitation"
-                className="group relative overflow-hidden rounded-full border border-gold/70 bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 px-8 py-3.5 transition-all hover:border-gold hover:bg-gold/30 active:scale-95 cursor-pointer shadow-lg"
+                className="group relative overflow-hidden rounded-full border border-[#F3E3C0] bg-[#F3E3C0] px-8 py-3.5 transition-all hover:bg-[#FFFDF5] active:scale-95 cursor-pointer shadow-xl"
               >
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-gold/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                <span className="relative font-title text-[0.7rem] uppercase tracking-[0.34em] text-gold-deep font-bold">
+                <span className="relative font-title text-[0.72rem] uppercase tracking-[0.34em] text-[#3B1F14] font-bold">
                   Open Invitation
                 </span>
               </button>
 
-              <p className="mt-4 text-[0.58rem] uppercase tracking-[0.22em] text-muted-foreground">
+              <p className="mt-4 text-[0.6rem] uppercase tracking-[0.22em] text-[#F3E3C0]">
                 Music will play softly
               </p>
             </div>

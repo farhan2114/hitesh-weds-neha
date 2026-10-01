@@ -589,8 +589,8 @@ export const EventsSection: React.FC = () => {
               onClick={() => setActiveIndex(idx)}
               className={`relative px-4 py-1.5 sm:px-6 sm:py-2 rounded-full font-serif text-xs sm:text-sm tracking-wider uppercase font-semibold transition-all duration-300 ${
                 activeIndex === idx
-                  ? 'bg-gradient-to-r from-[#8B1E3F] via-[#A82548] to-[#8B1E3F] text-white shadow-[0_4px_16px_rgba(212,175,55,0.4)] border border-[#D4AF37] scale-105 ring-1 ring-gold/40'
-                  : 'bg-white/80 dark:bg-black/30 text-foreground/80 hover:text-foreground border border-gold/30 hover:border-gold hover:bg-white'
+                  ? 'bg-[#A83B00] text-[#FFFDF5] shadow-[0_4px_16px_rgba(59,31,20,0.5)] border border-[#F3E3C0] scale-105 ring-1 ring-[#F3E3C0]/60'
+                  : 'bg-[#CB4501] text-[#F3E3C0] hover:text-[#FFFDF5] border border-[#F3E3C0]/40 hover:border-[#F3E3C0]'
               }`}
             >
               {ev.name}
@@ -618,7 +618,7 @@ export const EventsSection: React.FC = () => {
             type="button"
             onClick={prevEvent}
             aria-label="Previous celebration"
-            className="absolute left-1 sm:left-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/95 text-[#3A0810] shadow-[0_4px_16px_rgba(0,0,0,0.25)] border border-[#D4AF37] backdrop-blur-md transition-all duration-300 hover:bg-[#D4AF37] hover:text-white hover:scale-110 active:scale-95"
+            className="absolute left-1 sm:left-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#F3E3C0] text-[#3B1F14] shadow-[0_4px_16px_rgba(59,31,20,0.3)] border border-[#F3E3C0] backdrop-blur-md transition-all duration-300 hover:bg-[#FFFDF5] hover:text-[#3B1F14] hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="h-5 w-5 sm:h-7 sm:w-7" />
           </button>
@@ -628,7 +628,7 @@ export const EventsSection: React.FC = () => {
             type="button"
             onClick={nextEvent}
             aria-label="Next celebration"
-            className="absolute right-1 sm:right-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white/95 text-[#3A0810] shadow-[0_4px_16px_rgba(0,0,0,0.25)] border border-[#D4AF37] backdrop-blur-md transition-all duration-300 hover:bg-[#D4AF37] hover:text-white hover:scale-110 active:scale-95"
+            className="absolute right-1 sm:right-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#F3E3C0] text-[#3B1F14] shadow-[0_4px_16px_rgba(59,31,20,0.3)] border border-[#F3E3C0] backdrop-blur-md transition-all duration-300 hover:bg-[#FFFDF5] hover:text-[#3B1F14] hover:scale-110 active:scale-95"
           >
             <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7" />
           </button>
@@ -886,7 +886,7 @@ export const EventsSection: React.FC = () => {
                 href={activeModalEvent.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#8B1E3F] via-[#A82548] to-[#8B1E3F] py-3.5 px-6 font-serif text-xs uppercase tracking-[0.25em] text-white shadow-lg border border-gold/40 transition-all duration-300 hover:from-[#A82548] hover:to-[#B83054] hover:shadow-xl active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#A83B00] via-[#C43907] to-[#A83B00] py-3.5 px-6 font-serif text-xs uppercase tracking-[0.25em] text-[#FFFDF5] shadow-lg border border-[#F3E3C0]/40 transition-all duration-300 hover:from-[#C43907] hover:to-[#CB4501] hover:shadow-xl active:scale-[0.98]"
               >
                 <Navigation className="h-4 w-4" />
                 Get Directions on Google Maps

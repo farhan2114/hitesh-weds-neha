@@ -180,7 +180,7 @@ export const RsvpSection: React.FC = () => {
   };
 
   const inputClass =
-    "w-full border-b border-gold/40 bg-transparent px-1 py-3 font-sans text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-gold";
+    "w-full border-b border-[#F3E3C0]/60 bg-transparent px-1 py-3 font-sans text-sm text-[#FFFDF5] outline-none transition-colors placeholder:text-[#F3E3C0]/70 focus:border-[#F3E3C0]";
 
   const attendingEvents = submitted
     ? events.filter((e) => submitted.attendance[e.name] === "attending")
@@ -473,25 +473,25 @@ export const RsvpSection: React.FC = () => {
 
                 {/* Blessings Message */}
                 <div className="mt-8">
-                  <label className="block text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground mb-1 font-title flex items-center gap-1.5">
-                    <Heart className="h-3.5 w-3.5 text-maroon" />
+                  <label className="block text-[0.68rem] uppercase tracking-[0.2em] text-[#F3E3C0] mb-1 font-title flex items-center gap-1.5">
+                    <Heart className="h-3.5 w-3.5 text-[#F3E3C0]" />
                     Blessings Message for Hitesh &amp; Neha
                   </label>
                   <textarea
-                    className={`${inputClass} mt-2 resize-none rounded-xl border border-gold/30 p-3 bg-muted/10`}
+                    className={`${inputClass} mt-2 resize-none rounded-xl border border-[#F3E3C0]/40 p-3 bg-black/20`}
                     placeholder="Write your blessings, prayers, or personal message for Hitesh & Neha..."
                     rows={4}
                     maxLength={500}
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
                   />
-                  <p className="text-right text-[10px] text-muted-foreground mt-1">
+                  <p className="text-right text-[10px] text-[#F3E3C0] mt-1">
                     {note.length}/500 characters
                   </p>
                 </div>
 
                 {error && (
-                  <p className="mt-4 text-center font-title text-xs tracking-wider text-maroon font-semibold">
+                  <p className="mt-4 text-center font-title text-xs tracking-wider text-[#FFFDF5] bg-[#A83B00] py-1.5 px-3 rounded-md font-semibold border border-[#F3E3C0]/40">
                     {error}
                   </p>
                 )}
@@ -499,7 +499,7 @@ export const RsvpSection: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mt-8 w-full rounded-full border border-gold/70 bg-gradient-to-r from-[#D4AF37] via-[#E5B842] to-[#D4AF37] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#2A0810] font-bold shadow-[0_4px_20px_rgba(212,175,55,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_6px_24px_rgba(212,175,55,0.5)] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  className="mt-8 w-full rounded-full border border-[#F3E3C0] bg-[#F3E3C0] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#3B1F14] font-bold shadow-lg transition-all hover:bg-[#FFFDF5] hover:scale-[1.01] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isSubmitting
                     ? (isEditing ? 'Updating RSVP...' : 'Submitting RSVP...')
