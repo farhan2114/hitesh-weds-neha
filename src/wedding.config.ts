@@ -1,4 +1,4 @@
-﻿/**
+/**
  * =======================================================================
  * 💍 WEDDING INVITATION — MASTER CLIENT CONFIGURATION FILE
  * =======================================================================
@@ -164,7 +164,7 @@ Hitesh & Neha`,
     supabaseAnonKey: 'sb_publishable_7USKYo1sBAT7p3_kqWdrqg_RCxNm3yd',
     supabaseTable: 'rsvps',
     googleSheetWebhookUrl:
-      'https://script.google.com/macros/s/AKfycbz9ar1L74KCKJgym2fztj8CGbptrG807JaMgYu3wMTzIhLVxFzLUUy3JKDJBkZkakP7/exec',
+      'https://script.google.com/macros/s/AKfycbwEEeApUbQYYgPQyy_Hc6eq1cFgX8RR559gHa8K295TSVgVFykPHBHTLrrwvBbDVhd3/exec',
   },
 };
 
