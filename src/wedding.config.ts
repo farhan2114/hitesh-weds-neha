@@ -134,7 +134,7 @@ export const weddingConfig = {
     },
     {
       id: 'vratham',
-      name: 'Satyanarayana Vratham',
+      name: 'Satyanarayana swami Vratam',
       tagline: 'Sacred prayers, divine blessings & auspicious feast',
       day: 'Sunday, 20 Dec',
       time: '11:00 AM onwards',
@@ -143,7 +143,7 @@ export const weddingConfig = {
       mapsUrl:
         'https://www.google.com/maps/search/?api=1&query=348+Lunar+Road,+Piscataway,+NJ+08854',
       image: '/client-images/event-reception.jpg',
-      note: 'Satyanarayana Vratham and family celebrations',
+      note: 'Satyanarayana swami Vratam and family celebrations',
       funLines:
         'Join the family in invoking the divine blessings of Lord Satyanarayana Swamy for a joyous, blessed married life followed by mahaprasadam lunch. 🙏✨',
       dressCode: 'Traditional Elegance: Kurtas, Silk Sarees & Ethnic Attire 🪔',

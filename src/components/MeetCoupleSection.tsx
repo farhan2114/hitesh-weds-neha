@@ -7,7 +7,7 @@ export const MeetCoupleSection: React.FC = () => {
   const { couple } = weddingConfig;
 
   return (
-    <section id="couple" className="relative overflow-hidden px-5 py-20 sm:py-28">
+    <section id="couple" className="relative overflow-hidden px-5 pt-4 pb-16 sm:pt-6 sm:pb-24">
       <SpinningMandala className="-right-24 bottom-10 w-56 sm:w-72" />
       <Ornament className="-left-8 top-10 w-36 sm:w-52" />
       <Ornament variant="small" className="right-2 top-1/3 w-24 rotate-45 sm:w-32" />

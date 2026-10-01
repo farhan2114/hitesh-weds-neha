@@ -66,7 +66,7 @@ export const GratitudeSection: React.FC = () => {
               loading="lazy"
               className="mx-auto mt-10 w-48 sm:w-60"
             />
-            <p className="mt-6 font-serif text-lg sm:text-2xl text-gold-deep font-medium leading-relaxed">
+            <p className="mt-6 font-telugu text-xl sm:text-3xl text-gold-deep font-normal leading-relaxed drop-shadow-sm">
               {weddingData.familyLine || 'మీ ఆశీస్సులే మా నూతన జీవితానికి తొలి అడుగు'}
             </p>
             <p className="mt-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">

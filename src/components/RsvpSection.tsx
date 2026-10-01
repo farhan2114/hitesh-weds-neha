@@ -146,7 +146,11 @@ export const RsvpSection: React.FC = () => {
       haldi: attendance["Haldi"] === "attending" ? "Yes" : "No",
       marriage: attendance["Marriage"] === "attending" ? "Yes" : "No",
       sangeet: attendance["Sangeet & Cocktail"] === "attending" ? "Yes" : "No",
-      vratham: attendance["Satyanarayana Vratham"] === "attending" ? "Yes" : "No",
+      vratham:
+        attendance["Satyanarayana swami Vratam"] === "attending" ||
+        attendance["Satyanarayana Vratham"] === "attending"
+          ? "Yes"
+          : "No",
       note: data.note || "",
       isUpdate: isEditing,
       originalEmail: prevEmail,

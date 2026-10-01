@@ -92,6 +92,10 @@
   font-size: 0.7rem;
 }
 
+.font-telugu {
+  font-family: 'Suranna', 'Peddana', 'Gautami', 'Nirmala UI', serif;
+}
+
 .doors-locked,
 html.doors-locked,
 body.doors-locked {
