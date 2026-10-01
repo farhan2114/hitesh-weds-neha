@@ -252,12 +252,23 @@ function doPost(e) {
 
 function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheetNames = ss.getSheets().map(function(s) { return s.getName(); });
   var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
   setupSheet(sheet);
+  
+  var lastRow = sheet.getLastRow();
+  var sampleRows = [];
+  if (lastRow >= 6) {
+    sampleRows = sheet.getRange(Math.max(6, lastRow - 3), 1, Math.min(4, lastRow - 5), 13).getValues();
+  }
+
   return ContentService
     .createTextOutput(JSON.stringify({
       status: 'active',
-      message: 'Hitesh & Neha Wedding RSVP Endpoint is online with Unified Dashboard and In-Place Editing.'
+      activeSheet: sheet.getName(),
+      allSheets: sheetNames,
+      totalRows: lastRow,
+      recentEntries: sampleRows
     }))
     .setMimeType(ContentService.MimeType.JSON);
 }
