@@ -26,12 +26,12 @@ export const weddingConfig = {
     hashtag: '#HiteshWedsNeha',
 
     brideRole: 'The bride',
-    brideParentsNote: 'Daughter of loving parents',
+    brideParentsNote: 'Daughter of Ramachander Srinivas & Madhuri Diwan',
     bridePhoto: '/client-images/bride.jpg',
     bridePhotoAlt: 'Neha, the bride',
 
     groomRole: 'The groom',
-    groomParentsNote: 'Son of loving parents',
+    groomParentsNote: 'Son of Adusumalli SrinivasaRao & Padmavathi ',
     groomPhoto: '/client-images/groom.jpg',
     groomPhotoAlt: 'Hitesh, the groom',
   },
@@ -40,9 +40,9 @@ export const weddingConfig = {
   // 2. DATES & CEREMONY TIME
   // -------------------------------------------------------------
   date: {
-    label: 'Sunday, 14 February 2027',
-    short: '14 . 02 . 2027',
-    muhurtham: 'Muhurtham at 9:45 AM',
+    label: 'Friday, 18 December 2026',
+    short: '18 . 12 . 2026',
+    muhurtham: 'Sumuhurtham at 7:05 PM',
   },
 
   // -------------------------------------------------------------
@@ -62,17 +62,17 @@ the union of two hearts`,
   // 4. VENUE & GOOGLE MAPS LOCATION
   // -------------------------------------------------------------
   venue: {
-    name: 'Sri Kalyana Mandapam',
-    city: 'Madurai, Tamil Nadu',
-    cityName: 'Madurai', // Shows in "Join us in [City]"
-    locationUnderMap: 'Madurai · Tamil Nadu · 22 . 11 . 2026', // Text displayed directly under the map frame
-    description: 'Follow the golden path to Sri Kalyana Mandapam, where our families will be waiting to welcome you.',
+    name: 'Indian Cultural Center of South Jersey',
+    city: 'Marlton, New Jersey',
+    cityName: 'Marlton', // Shows in "Join us in [City]"
+    locationUnderMap: 'Marlton · New Jersey · 18 . 12 . 2026', // Text displayed directly under the map frame
+    description: 'Follow the golden path to the Indian Cultural Center of South Jersey, where our families will gather to celebrate love, togetherness, and a beautiful new beginning.',
     
     // Direct link when clicking "Open in maps" (leave empty to auto-generate from venue + city)
-    mapsSearchUrl: 'https://www.google.com/maps/search/Sri%20Kalyana%20Mandapam%20Madurai%2C%20Tamil%20Nadu',
+    mapsSearchUrl: 'https://maps.app.goo.gl/1ijyBLo5g4rztGseA',
     
     // Interactive Google Maps iframe URL
-    mapsEmbedUrl: 'https://www.google.com/maps?q=Sri%20Kalyana%20Mandapam%20Madurai%2C%20Tamil%20Nadu&output=embed',
+    mapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.4789917748626!2d-74.92050792401626!3d39.8635074715339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c1330a7015403f%3A0x98b7d3f2d86de76f!2sIndian%20Cultural%20Center%20of%20South%20Jersey!5e0!3m2!1sen!2sin!4v1790787135035!5m2!1sen!2sin',
   },
 
   // -------------------------------------------------------------
@@ -143,37 +143,39 @@ the union of two hearts`,
   // -------------------------------------------------------------
   // 8. ORDER OF CELEBRATIONS / EVENTS
   // -------------------------------------------------------------
-  events: [
-    {
-      name: 'Nichayathartham',
-      day: 'Friday, 12 Feb',
-      time: '6:00 PM',
-      place: 'Family Home, Madurai',
-      note: 'Engagement, followed by dinner',
-    },
-    {
-      name: 'Mehndi & Sangeet',
-      day: 'Saturday, 13 Feb',
-      time: '4:00 PM',
-      place: 'Mandapam Lawns',
-      note: 'Henna, music and a lot of dancing',
-    },
-    {
-      name: 'Muhurtham',
-      day: 'Sunday, 14 Feb',
-      time: '9:45 AM',
-      place: 'Sri Kalyana Mandapam',
-      note: 'The wedding ceremony',
-    },
-    {
-      name: 'Reception',
-      day: 'Sunday, 14 Feb',
-      time: '7:00 PM',
-      place: 'Mandapam Hall',
-      note: 'Dinner and celebrations',
-    },
-  ],
+events: [
+  {
+    name: 'Haldi',
+    day: 'Thursday, 17 Dec',
+    time: '11:00 AM onwards',
+    place: 'Family Home, Cherry Hill',
+    note: 'Haldi celebrations with family and loved ones',
+  },
 
+  {
+    name: 'Marriage',
+    day: 'Friday, 18 Dec',
+    time: '5:30 PM onwards · Sumuhurtham 7:05 PM',
+    place: 'Indian Cultural Center of South Jersey',
+    note: 'Wedding procession followed by the marriage ceremony',
+  },
+
+  {
+    name: 'Sangeet & Cocktail',
+    day: 'Saturday, 19 Dec',
+    time: '6:00 PM onwards',
+    place: 'Indian Cultural Center of South Jersey',
+    note: 'An evening of music, dance, cocktails and celebrations',
+  },
+
+  {
+    name: 'Satyanarayana Vratham',
+    day: 'Sunday, 20 Dec',
+    time: '11:00 AM onwards',
+    place: 'Piscataway, New Jersey',
+    note: 'Satyanarayana Vratham and family celebrations',
+  },
+],
   // -------------------------------------------------------------
   // 9. BACKGROUND MUSIC
   // -------------------------------------------------------------
