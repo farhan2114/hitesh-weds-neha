@@ -1,40 +1,13 @@
 import React from 'react';
-import { assets } from '../data/assets';
 import { weddingConfig } from '../wedding.config';
 import { Ornament, SpinningMandala } from './Ornaments';
 import { RevealOnScroll } from './RevealOnScroll';
 
-interface PersonCardProps {
-  name: string;
-  role: string;
-  note: string;
-  src: string;
-  alt: string;
-  delay?: number;
-}
-
-const PersonCard: React.FC<PersonCardProps> = ({ name, role, note, src, alt, delay = 0 }) => {
-  return (
-    <RevealOnScroll delay={delay}>
-      <figure className="mx-auto max-w-sm text-center">
-        <div className="relative mx-auto aspect-[4/5] overflow-hidden border border-gold/40 bg-muted shadow-[var(--shadow-card)]">
-          <img src={src} alt={alt} loading="lazy" width={1024} height={1280} className="h-full w-full object-cover" />
-          <span className="pointer-events-none absolute inset-3 border border-paper/30" />
-        </div>
-        <figcaption>
-          <p className="mt-7 font-title text-[0.68rem] uppercase tracking-[0.3em] text-gold-deep">{role}</p>
-          <h3 className="mt-3 font-display text-2xl min-[360px]:text-3xl sm:text-4xl break-words px-2">{name}</h3>
-          <div className="rule-gold mx-auto mt-5 w-20" />
-          <p className="mx-auto mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">{note}</p>
-        </figcaption>
-      </figure>
-    </RevealOnScroll>
-  );
-};
-
 export const MeetCoupleSection: React.FC = () => {
+  const { couple } = weddingConfig;
+
   return (
-    <section id="couple" className="relative overflow-hidden px-5 py-24 sm:py-32">
+    <section id="couple" className="relative overflow-hidden px-5 py-20 sm:py-28">
       <SpinningMandala className="-right-24 bottom-10 w-56 sm:w-72" />
       <Ornament className="-left-8 top-10 w-36 sm:w-52" />
       <Ornament variant="small" className="right-2 top-1/3 w-24 rotate-45 sm:w-32" />
@@ -43,26 +16,71 @@ export const MeetCoupleSection: React.FC = () => {
         <RevealOnScroll className="text-center">
           <p className="eyebrow">Together with their families</p>
           <h2 className="mt-4 font-display text-4xl sm:text-6xl">Meet the couple</h2>
-          <div className="rule-gold mx-auto mt-8 w-32" />
+          <div className="rule-gold mx-auto mt-6 w-32" />
         </RevealOnScroll>
 
-        <div className="mt-16 grid gap-14 sm:grid-cols-2 sm:gap-10">
-          <PersonCard
-            name={weddingConfig.couple.bride}
-            role={weddingConfig.couple.brideRole}
-            note={weddingConfig.couple.brideParentsNote}
-            src={weddingConfig.couple.bridePhoto || assets.bride}
-            alt={weddingConfig.couple.bridePhotoAlt || `${weddingConfig.couple.bride}, the bride`}
-            delay={0.1}
-          />
-          <PersonCard
-            name={weddingConfig.couple.groom}
-            role={weddingConfig.couple.groomRole}
-            note={weddingConfig.couple.groomParentsNote}
-            src={weddingConfig.couple.groomPhoto || assets.groom}
-            alt={weddingConfig.couple.groomPhotoAlt || `${weddingConfig.couple.groom}, the groom`}
-            delay={0.2}
-          />
+        {/* ── Single Showcase Couple Portrait ── */}
+        <RevealOnScroll delay={0.15}>
+          <div className="mx-auto mt-10 sm:mt-14 max-w-xl sm:max-w-2xl text-center">
+            <div className="relative mx-auto overflow-hidden border border-gold/40 bg-muted shadow-[var(--shadow-card)] rounded-sm">
+              <img
+                src={couple.couplePhoto || '/client-images/couple.jpg'}
+                alt={couple.couplePhotoAlt || `${couple.groom} & ${couple.bride}`}
+                loading="lazy"
+                width={1024}
+                height={851}
+                className="h-full w-full object-cover max-h-[580px] object-top"
+              />
+              <span className="pointer-events-none absolute inset-3 sm:inset-4 border border-paper/30" />
+            </div>
+          </div>
+        </RevealOnScroll>
+
+        {/* ── Groom & Bride Descriptions ── */}
+        <div className="mt-10 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-12 text-center">
+          {/* Groom Card */}
+          <RevealOnScroll delay={0.25}>
+            <div className="flex flex-col items-center h-full px-2 sm:px-4">
+              <p className="font-title text-[0.68rem] uppercase tracking-[0.3em] text-gold-deep">
+                {couple.groomRole || 'The Groom'}
+              </p>
+              <h3 className="mt-2.5 font-display text-3xl sm:text-4xl text-foreground">
+                {couple.groom}
+              </h3>
+              <div className="rule-gold mx-auto mt-4 w-16" />
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground font-serif italic max-w-sm">
+                {couple.groomDescription ||
+                  'A gentleman of steadfast character, quiet strength, and genuine kindness. Grounded in wisdom and guided by warmth, his caring nature and unwavering dedication make him the perfect companion and partner for life.'}
+              </p>
+              {couple.groomParentsNote && (
+                <p className="mt-4 text-xs leading-normal tracking-wide text-foreground/80 font-medium max-w-xs">
+                  {couple.groomParentsNote}
+                </p>
+              )}
+            </div>
+          </RevealOnScroll>
+
+          {/* Bride Card */}
+          <RevealOnScroll delay={0.35}>
+            <div className="flex flex-col items-center h-full px-2 sm:px-4">
+              <p className="font-title text-[0.68rem] uppercase tracking-[0.3em] text-gold-deep">
+                {couple.brideRole || 'The Bride'}
+              </p>
+              <h3 className="mt-2.5 font-display text-3xl sm:text-4xl text-foreground">
+                {couple.bride}
+              </h3>
+              <div className="rule-gold mx-auto mt-4 w-16" />
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground font-serif italic max-w-sm">
+                {couple.brideDescription ||
+                  'A soul of graceful warmth and radiant joy, her laughter lights up every room she enters. With a generous heart and spirited smile, she steps into this new chapter with boundless love, poise, and devotion to family.'}
+              </p>
+              {couple.brideParentsNote && (
+                <p className="mt-4 text-xs leading-normal tracking-wide text-foreground/80 font-medium max-w-xs">
+                  {couple.brideParentsNote}
+                </p>
+              )}
+            </div>
+          </RevealOnScroll>
         </div>
       </div>
     </section>

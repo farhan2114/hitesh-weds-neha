@@ -8,10 +8,80 @@ export interface BlessingItem {
   created_at?: string;
 }
 
-const SUPABASE_URL = 'https://ekmobqyfwzyoqkpwihun.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_48RlgrD2RirZ85gyRJzsTA_kdNillw3';
+const SUPABASE_URL = 'https://lyukxpzpcjedvrkwrcur.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_7USKYo1sBAT7p3_kqWdrqg_RCxNm3yd';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+export const GOOGLE_SHEET_WEBHOOK_URL =
+  'https://script.google.com/macros/s/AKfycbz9ar1L74KCKJgym2fztj8CGbptrG807JaMgYu3wMTzIhLVxFzLUUy3JKDJBkZkakP7/exec';
+
+export interface RsvpPayload {
+  name: string;
+  email: string;
+  adults: number;
+  kids: number;
+  guest_count: number;
+  attending_events: string;
+  declined_events: string;
+  haldi?: 'Yes' | 'No';
+  marriage?: 'Yes' | 'No';
+  sangeet?: 'Yes' | 'No';
+  vratham?: 'Yes' | 'No';
+  note: string;
+  isUpdate?: boolean;
+  originalEmail?: string;
+  originalName?: string;
+  submissionId?: string;
+}
+
+export async function saveRsvpToGoogleSheet(payload: RsvpPayload): Promise<void> {
+  const webhookUrl = GOOGLE_SHEET_WEBHOOK_URL;
+  if (!webhookUrl) return;
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        action: payload.isUpdate ? 'update' : 'create',
+        isUpdate: !!payload.isUpdate,
+        submissionId: payload.submissionId || '',
+        originalEmail: payload.originalEmail || payload.email,
+        originalName: payload.originalName || payload.name,
+        name: payload.name,
+        email: payload.email,
+        contact: payload.email,
+        adults: payload.adults,
+        kids: payload.kids,
+        guest_count: payload.guest_count,
+        attending_events: payload.attending_events,
+        declined_events: payload.declined_events,
+        haldi: payload.haldi || 'No',
+        marriage: payload.marriage || 'No',
+        sangeet: payload.sangeet || 'No',
+        vratham: payload.vratham || 'No',
+        blessings: payload.note || '-',
+        note: payload.note || '-',
+        timestamp: new Date().toISOString(),
+      }),
+    });
+  } catch (err) {
+    console.warn('Google Sheet RSVP sync failed:', err);
+  }
+}
+
+export async function saveRsvp(payload: RsvpPayload): Promise<{ success: boolean; error?: string }> {
+  try {
+    await saveRsvpToGoogleSheet(payload);
+  } catch (err) {
+    console.warn('Google Sheet sync error:', err);
+  }
+  return { success: true };
+}
 
 const FALLBACK_KEY = 'vows_blessings_cache';
 

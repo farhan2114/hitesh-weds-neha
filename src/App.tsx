@@ -3,12 +3,10 @@ import Lenis from 'lenis';
 import { HeroSection } from './components/HeroSection';
 import { IntroSection } from './components/IntroSection';
 import { MeetCoupleSection } from './components/MeetCoupleSection';
-import { GallerySection } from './components/GallerySection';
 import { ParallaxSection } from './components/ParallaxSection';
-import { StorySection } from './components/StorySection';
 import { EventsSection } from './components/EventsSection';
 import { VenueSection } from './components/VenueSection';
-import { BlessingsSection } from './components/BlessingsSection';
+import { RsvpSection } from './components/RsvpSection';
 import { GratitudeSection } from './components/GratitudeSection';
 import { Footer } from './components/Footer';
 import { MusicButton } from './components/MusicButton';
@@ -42,12 +40,10 @@ export const App: React.FC = () => {
       <HeroSection />
       <IntroSection />
       <MeetCoupleSection />
-      <GallerySection />
       <ParallaxSection />
-      <StorySection />
       <EventsSection />
       <VenueSection />
-      <BlessingsSection />
+      <RsvpSection />
       <GratitudeSection />
       <Footer />
       <MusicButton />

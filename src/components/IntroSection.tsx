@@ -12,9 +12,22 @@ export const IntroSection: React.FC = () => {
 
       <RevealOnScroll>
         <p className="eyebrow">{weddingConfig.invitation.sanskritMantra || 'Om Sri Ganeshaya Namaha'}</p>
-        <p className="mx-auto mt-8 max-w-2xl whitespace-pre-line font-display text-3xl leading-snug sm:text-5xl">
-          {weddingData.familyLine}
-        </p>
+        
+        <div className="mx-auto mt-8 max-w-2xl text-center space-y-3">
+          <p className="font-title text-sm sm:text-base tracking-[0.28em] uppercase text-gold-deep font-semibold">
+            The Adusumalli Family
+          </p>
+          <p className="font-serif italic text-xl sm:text-3xl text-foreground/90 leading-relaxed">
+            Cordially Invites You to Celebrate
+          </p>
+          <p className="font-serif text-xs sm:text-sm uppercase tracking-[0.25em] text-muted-foreground">
+            the Wedding of
+          </p>
+          <h2 className="font-display text-4xl sm:text-6xl text-gold-foil animate-foil pt-2">
+            {weddingData.groom} &amp; {weddingData.bride}
+          </h2>
+        </div>
+
         <div className="rule-gold mx-auto mt-10 w-40" />
         <p className="mt-6 font-title tracking-[0.25em] uppercase text-sm text-gold-deep">
           {weddingData.hashtag}

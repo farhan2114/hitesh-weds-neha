@@ -155,24 +155,29 @@ export const HeroSection: React.FC = () => {
               className="pointer-events-none absolute -top-16 left-1/2 w-28 -translate-x-1/2 opacity-60 sm:-top-20 sm:w-36"
             />
             <p className="invite-line eyebrow mt-6">{weddingData.dateShort}</p>
-            <h1 className="invite-line mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-display text-2xl min-[360px]:text-3xl min-[480px]:text-5xl sm:text-6xl md:text-7xl leading-[1.08] break-words">
-              <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
-              <span className="mx-1.5 font-title text-base sm:text-2xl md:text-3xl align-middle text-maroon">&amp;</span>
+            <div className="invite-line mx-auto mt-5 max-w-md text-center">
+              <p className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-gold-deep font-semibold">
+                The Adusumalli Family
+              </p>
+              <p className="mt-1.5 font-serif italic text-sm sm:text-base text-foreground/80">
+                Cordially Invites You to Celebrate the Wedding of
+              </p>
+            </div>
+            <h1 className="invite-line mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-display text-2xl min-[360px]:text-3xl min-[480px]:text-5xl sm:text-6xl md:text-7xl leading-[1.08] break-words">
               <span className="text-gold-foil animate-foil">{weddingData.groom}</span>
+              <span className="mx-1.5 font-title text-base sm:text-2xl md:text-3xl align-middle text-maroon">&amp;</span>
+              <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
             </h1>
-            <div className="invite-line rule-gold mx-auto mt-8 w-2/3" />
-            <p className="invite-line mx-auto mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              {weddingData.invitationLine}
-            </p>
-            <p className="invite-line mt-8 font-title text-lg tracking-wide">{weddingData.dateLabel}</p>
+            <div className="invite-line rule-gold mx-auto mt-6 w-2/3" />
+            <p className="invite-line mt-6 font-title text-lg tracking-wide">{weddingData.dateLabel}</p>
             <p className="invite-line mt-1 text-sm text-muted-foreground">
               {weddingData.muhurtham} · {weddingData.venue}, {weddingData.city}
             </p>
             <a
-              href="#blessings"
-              className="invite-line mt-9 inline-flex items-center gap-2 border border-gold/60 bg-transparent px-6 py-3 text-[0.7rem] uppercase tracking-[0.3em] text-gold-deep transition-colors hover:bg-gold/10"
+              href="#rsvp"
+              className="invite-line mt-8 inline-flex items-center gap-2 border border-gold/60 bg-transparent px-6 py-3 text-[0.7rem] uppercase tracking-[0.3em] text-gold-deep transition-colors hover:bg-gold/10"
             >
-              Send your blessing
+              RSVP &amp; Blessings
             </a>
           </div>
         </div>
