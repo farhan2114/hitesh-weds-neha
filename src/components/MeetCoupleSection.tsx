@@ -21,17 +21,17 @@ export const MeetCoupleSection: React.FC = () => {
 
         {/* ── Single Showcase Couple Portrait ── */}
         <RevealOnScroll delay={0.15}>
-          <div className="mx-auto mt-10 sm:mt-14 max-w-xl sm:max-w-2xl text-center">
+          <div className="mx-auto mt-10 sm:mt-14 max-w-md sm:max-w-lg text-center">
             <div className="relative mx-auto overflow-hidden border border-gold/40 bg-muted shadow-[var(--shadow-card)] rounded-sm">
               <img
                 src={couple.couplePhoto || '/client-images/couple.jpg'}
                 alt={couple.couplePhotoAlt || `${couple.groom} & ${couple.bride}`}
                 loading="lazy"
-                width={1024}
-                height={851}
-                className="h-full w-full object-cover max-h-[580px] object-top"
+                width={723}
+                height={800}
+                className="w-full h-auto block object-cover"
               />
-              <span className="pointer-events-none absolute inset-3 sm:inset-4 border border-paper/30" />
+              <span className="pointer-events-none absolute inset-2.5 sm:inset-3 border border-paper/25" />
             </div>
           </div>
         </RevealOnScroll>
