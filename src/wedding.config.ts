@@ -57,7 +57,7 @@ Hitesh & Neha`,
     doorsButtonText: 'Open Invitation',
     doorsSubText: 'Music will play softly',
     introVideo: '/client-images/intro.mp4',
-    introPoster: '/client-images/couple.jpg',
+    introPoster: '/client-images/intro-poster.jpg',
   },
 
   // -------------------------------------------------------------

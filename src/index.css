@@ -93,22 +93,23 @@
 }
 
 .doors-locked,
+html.doors-locked,
 body.doors-locked {
   overscroll-behavior: none;
   height: 100% !important;
   max-height: 100svh !important;
   overflow: hidden !important;
-}
-
-body.doors-locked {
+  margin: 0 !important;
+  padding: 0 !important;
   touch-action: none;
-  width: 100%;
-  position: fixed;
-  inset: 0;
+  scrollbar-width: none !important;
 }
 
-html.doors-locked {
-  scrollbar-gutter: stable;
+html.doors-locked::-webkit-scrollbar,
+body.doors-locked::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 @keyframes spin-soft {

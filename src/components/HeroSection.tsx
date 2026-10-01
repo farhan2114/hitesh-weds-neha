@@ -120,18 +120,19 @@ export const HeroSection: React.FC = () => {
   const handleVideoEnd = useCallback(() => {
     if (videoOver || fading) return;
     setFading(true);
-    playAudio();
+    playAudio(false);
     tlRef.current?.play();
     setTimeout(() => {
       setVideoOver(true);
-    }, 1100);
+      setOpened(true);
+    }, 1000);
   }, [videoOver, fading]);
 
   /* ── Smoothly trigger fadeout right before video ends to prevent freeze-frames ── */
   const handleTimeUpdate = useCallback(() => {
     const vid = videoRef.current;
     if (!vid || fading || videoOver) return;
-    if (vid.duration && vid.duration > 2 && vid.currentTime >= vid.duration - 0.8) {
+    if (vid.duration && vid.duration > 2 && vid.currentTime >= vid.duration - 1.2) {
       handleVideoEnd();
     }
   }, [fading, videoOver, handleVideoEnd]);
@@ -157,9 +158,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className={`${
-        opened ? 'relative' : 'fixed inset-0 z-[100]'
-      } flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-background`}
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-background"
     >
       {/* Temple Backdrop */}
       <img
@@ -229,27 +228,26 @@ export const HeroSection: React.FC = () => {
       {/* ── Intro Video Overlay (Ronish weds Hanisha style) ── */}
       {!videoOver && (
         <div
-          className="fixed inset-0 z-[200] overflow-hidden bg-black transition-all duration-1000 ease-out"
+          className="fixed inset-0 z-[200] w-screen h-[100svh] overflow-hidden bg-black transition-opacity duration-1000 ease-out"
           style={{
             opacity: fading ? 0 : 1,
-            transform: fading ? 'scale(1.04)' : 'scale(1)',
-            filter: fading ? 'blur(6px)' : 'blur(0px)',
             pointerEvents: fading ? 'none' : 'auto',
           }}
         >
           {/* Instant First-Frame Poster (renders 0ms without waiting for video decoding) */}
           <img
-            src={weddingData.introPoster || '/client-images/couple.jpg'}
+            src={weddingData.introPoster || '/client-images/intro-poster.jpg'}
             alt=""
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+            style={{ width: '100vw', height: '100svh' }}
           />
 
           {/* Video — configured with iOS Safari webkit-playsinline and muted attributes */}
           <video
             ref={videoRef}
             src={weddingData.introVideo || '/client-images/intro.mp4'}
-            poster={weddingData.introPoster || '/client-images/couple.jpg'}
+            poster={weddingData.introPoster || '/client-images/intro-poster.jpg'}
             muted
             playsInline
             autoPlay={false}
@@ -260,7 +258,7 @@ export const HeroSection: React.FC = () => {
             onEnded={handleVideoEnd}
             onError={handleVideoEnd}
             className="absolute inset-0 h-full w-full object-cover object-center"
-            style={{ transform: 'translateZ(0)', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
+            style={{ width: '100vw', height: '100svh', transform: 'translateZ(0)', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
           />
 
           {/* Card overlay on top of frozen first frame — smoothly fades on tap */}
