@@ -22,16 +22,34 @@
 var SHEET_NAME = 'Wedding RSVPs';
 
 /**
+ * Default function: If you just click 'Run', this executes immediately!
+ */
+function myFunction() {
+  cleanAndFormatSheet();
+}
+
+/**
+ * Creates a custom menu directly inside Google Sheets:
+ * Whenever you open or refresh your Google Sheet, you will see a menu
+ * named '💍 Wedding RSVP' next to 'Help'. You can click it anytime!
+ */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('💍 Wedding RSVP')
+    .addItem('✨ Clean & Format This Sheet Now', 'cleanAndFormatSheet')
+    .addToUi();
+}
+
+/**
  * =========================================================================
  * 🧹 ONE-CLICK CLEANUP & FORMAT FUNCTION:
- * Run this function from the toolbar dropdown to immediately clean up
- * any messy overlapping text, preserve all genuine guest RSVPs, and format
- * the entire sheet into a pristine dashboard!
+ * Cleans the exact tab you currently have open in front of your eyes!
  * =========================================================================
  */
 function cleanAndFormatSheet() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(SHEET_NAME) || ss.getActiveSheet();
+  // Target the exact active tab you are looking at right now!
+  var sheet = ss.getActiveSheet();
   try {
     sheet.setName(SHEET_NAME);
   } catch (err) {}
@@ -192,16 +210,10 @@ function doPost(e) {
 
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) {
-      var sheets = ss.getSheets();
-      if (sheets.length === 1 && sheets[0].getName() === 'Sheet1') {
-        sheets[0].setName(SHEET_NAME);
-        sheet = sheets[0];
-      } else {
-        sheet = ss.insertSheet(SHEET_NAME, 0);
-      }
-    }
+    var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
+    try {
+      sheet.setName(SHEET_NAME);
+    } catch (err) {}
 
     setupSheet(sheet);
 
