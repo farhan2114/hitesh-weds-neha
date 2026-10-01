@@ -11,17 +11,13 @@ export const IntroSection: React.FC = () => {
       <Ornament variant="gold" className="-right-6 bottom-8 w-32 -rotate-12 sm:w-44" />
 
       <RevealOnScroll>
-        <p className="eyebrow">{weddingConfig.invitation.sanskritMantra || 'Om Sri Ganeshaya Namaha'}</p>
+        <p className="font-serif text-lg sm:text-2xl text-gold-deep tracking-wider font-semibold">
+          {weddingConfig.invitation.sanskritMantra || 'ఓం శ్రీ గణేశాయ నమః'}
+        </p>
         
-        <div className="mx-auto mt-8 max-w-2xl text-center space-y-3">
-          <p className="font-title text-sm sm:text-base tracking-[0.28em] uppercase text-gold-deep font-semibold">
-            The Adusumalli Family
-          </p>
-          <p className="font-serif italic text-xl sm:text-3xl text-foreground/90 leading-relaxed">
-            Cordially Invites You to Celebrate
-          </p>
-          <p className="font-serif text-xs sm:text-sm uppercase tracking-[0.25em] text-muted-foreground">
-            the Wedding of
+        <div className="mx-auto mt-8 max-w-2xl text-center space-y-4">
+          <p className="font-serif italic text-xl sm:text-3xl text-foreground/90 leading-relaxed font-medium">
+            {weddingConfig.invitation.invitationLine || 'నూతన జీవితానికి నాంది పలుకుతూ...'}
           </p>
           <h2 className="font-display text-4xl sm:text-6xl text-gold-foil animate-foil pt-2">
             {weddingData.groom} &amp; {weddingData.bride}

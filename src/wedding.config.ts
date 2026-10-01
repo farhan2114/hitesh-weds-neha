@@ -44,16 +44,10 @@ export const weddingConfig = {
   // 3. INVITATION MESSAGE & FAMILY HOSTS
   // -------------------------------------------------------------
   invitation: {
-    sanskritMantra: 'Om Sri Ganeshaya Namaha',
+    sanskritMantra: 'ఓం శ్రీ గణేశాయ నమః',
     familyTitle: 'The Adusumalli Family',
-    invitationLine: `The Adusumalli Family
-Cordially Invites You to Celebrate
-the Wedding of
-Hitesh & Neha`,
-    familyLine: `The Adusumalli Family
-Cordially Invites You to Celebrate
-the Wedding of
-Hitesh & Neha`,
+    invitationLine: 'నూతన జీవితానికి నాంది పలుకుతూ...',
+    familyLine: 'మీ ఆశీస్సులే మా నూతన జీవితానికి తొలి అడుగు',
     doorsButtonText: 'Open Invitation',
     doorsSubText: 'Music will play softly',
     introVideo: '/client-images/intro.mp4',

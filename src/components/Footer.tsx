@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
           Adusumalli SrinivasaRao &amp; Padmavathi
         </p>
         <p className="font-title text-xs sm:text-sm tracking-[0.25em] uppercase text-gold-deep">
-          &amp; The Adusumalli Family
+          The Adusumalli Family
         </p>
       </div>
 
