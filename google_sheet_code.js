@@ -19,136 +19,86 @@
  * =========================================================================
  */
 
-var RESPONSES_SHEET_NAME = 'RSVP Responses';
-var SUMMARY_SHEET_NAME = '📊 Event Totals & Summary';
+var SHEET_NAME = 'Wedding RSVPs';
 
-function setupSheets() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+function setupSheet(sheet) {
+  if (sheet.getLastRow() === 0) {
+    // 1. Dashboard Title (Row 1)
+    sheet.getRange('A1:M1').merge();
+    sheet.getRange('A1').setValue('💍 HITESH & NEHA WEDDING — LIVE RSVP & EVENT TOTALS DASHBOARD');
+    sheet.getRange('A1').setBackground('#8B1E3F').setFontColor('#FFFFFF').setFontWeight('bold').setFontSize(13).setHorizontalAlignment('center');
+    sheet.setRowHeight(1, 36);
 
-  // 1. Setup RSVP Responses Sheet
-  var respSheet = ss.getSheetByName(RESPONSES_SHEET_NAME);
-  if (!respSheet) {
-    var sheets = ss.getSheets();
-    if (sheets.length === 1 && sheets[0].getName() === 'Sheet1') {
-      sheets[0].setName(RESPONSES_SHEET_NAME);
-      respSheet = sheets[0];
-    } else {
-      respSheet = ss.insertSheet(RESPONSES_SHEET_NAME, 0);
-    }
+    // 2. Dashboard Metric Labels (Row 2)
+    var metricHeaders = [
+      'Total RSVPs',
+      'Total Adults',
+      'Total Kids',
+      'Total Guests',
+      'Haldi Guests',
+      'Marriage Guests',
+      'Sangeet Guests',
+      'Vratham Guests',
+      '',
+      '',
+      '',
+      '',
+      ''
+    ];
+    sheet.getRange(2, 1, 1, 13).setValues([metricHeaders]);
+    sheet.getRange('A2:H2').setBackground('#D4AF37').setFontColor('#FFFFFF').setFontWeight('bold').setHorizontalAlignment('center');
+    sheet.setRowHeight(2, 28);
+
+    // 3. Live Dashboard Formulas (Row 3)
+    var formulas = [
+      '=IF(COUNTA(B6:B)=0, 0, COUNTA(B6:B))',
+      '=IF(COUNTA(B6:B)=0, 0, SUM(D6:D))',
+      '=IF(COUNTA(B6:B)=0, 0, SUM(E6:E))',
+      '=IF(COUNTA(B6:B)=0, 0, SUM(F6:F))',
+      '=IF(COUNTA(B6:B)=0, 0, SUMIF(G6:G, "Yes", F6:F))',
+      '=IF(COUNTA(B6:B)=0, 0, SUMIF(H6:H, "Yes", F6:F))',
+      '=IF(COUNTA(B6:B)=0, 0, SUMIF(I6:I, "Yes", F6:F))',
+      '=IF(COUNTA(B6:B)=0, 0, SUMIF(J6:J, "Yes", F6:F))',
+      '',
+      '',
+      '',
+      '',
+      ''
+    ];
+    sheet.getRange(3, 1, 1, 13).setValues([formulas]);
+    sheet.getRange('A3:H3').setFontWeight('bold').setFontSize(12).setHorizontalAlignment('center').setBackground('#FFF9E6');
+    sheet.setRowHeight(3, 30);
+
+    // 4. Blank divider (Row 4)
+    sheet.setRowHeight(4, 15);
+
+    // 5. All Guest Response Fields Header (Row 5)
+    var fieldHeaders = [
+      'Timestamp',
+      'Name',
+      'Mail ID',
+      'Adults',
+      'Kids',
+      'Total Guests',
+      'Haldi',
+      'Marriage',
+      'Sangeet & Cocktail',
+      'Satyanarayana Vratham',
+      'Attending Events Summary',
+      'Blessings / Note',
+      'Submission ID'
+    ];
+    sheet.getRange(5, 1, 1, fieldHeaders.length).setValues([fieldHeaders]);
+    sheet.getRange(5, 1, 1, fieldHeaders.length)
+      .setBackground('#8B1E3F')
+      .setFontColor('#FFFFFF')
+      .setFontWeight('bold')
+      .setHorizontalAlignment('center');
+    sheet.setRowHeight(5, 34);
+
+    // Freeze top 5 rows so Dashboard and Headers are always visible
+    sheet.setFrozenRows(5);
   }
-
-  var headers = [
-    'Timestamp',
-    'Name',
-    'Mail ID',
-    'Adults',
-    'Kids',
-    'Total Guests',
-    'Haldi',
-    'Marriage',
-    'Sangeet & Cocktail',
-    'Satyanarayana Vratham',
-    'Attending Events',
-    'Blessings Message',
-    'Submission ID'
-  ];
-
-  if (respSheet.getLastRow() === 0) {
-    respSheet.appendRow(headers);
-    var headerRange = respSheet.getRange(1, 1, 1, headers.length);
-    headerRange.setBackground('#8B1E3F');
-    headerRange.setFontColor('#FFFFFF');
-    headerRange.setFontWeight('bold');
-    headerRange.setHorizontalAlignment('center');
-    respSheet.setFrozenRows(1);
-    respSheet.setRowHeight(1, 35);
-  }
-
-  // 2. Setup / Refresh Summary Sheet
-  updateSummarySheet(ss);
-}
-
-function updateSummarySheet(ss) {
-  var summarySheet = ss.getSheetByName(SUMMARY_SHEET_NAME);
-  if (!summarySheet) {
-    summarySheet = ss.insertSheet(SUMMARY_SHEET_NAME, 1);
-  }
-
-  summarySheet.clear();
-  summarySheet.setTabColor('#D4AF37');
-
-  var respSheet = ss.getSheetByName(RESPONSES_SHEET_NAME);
-  var lastRow = respSheet ? respSheet.getLastRow() : 1;
-
-  // Header Title
-  summarySheet.getRange('A1:D1').merge();
-  summarySheet.getRange('A1').setValue('💍 HITESH & NEHA WEDDING — RSVP & EVENT TOTALS DASHBOARD');
-  summarySheet.getRange('A1').setBackground('#8B1E3F').setFontColor('#FFFFFF').setFontWeight('bold').setFontSize(13).setHorizontalAlignment('center');
-  summarySheet.setRowHeight(1, 38);
-
-  // Overall Stats Table
-  summarySheet.getRange('A3:B3').setValues([['Overall Metric', 'Count']]);
-  summarySheet.getRange('A3:B3').setBackground('#D4AF37').setFontColor('#FFFFFF').setFontWeight('bold');
-
-  if (lastRow > 1) {
-    summarySheet.getRange('A4:B7').setValues([
-      ['Total RSVP Entries', "=COUNTA('" + RESPONSES_SHEET_NAME + "'!B2:B" + lastRow + ")"],
-      ['Total Adults Attending', "=SUM('" + RESPONSES_SHEET_NAME + "'!D2:D" + lastRow + ")"],
-      ['Total Kids Attending', "=SUM('" + RESPONSES_SHEET_NAME + "'!E2:E" + lastRow + ")"],
-      ['Total Guests (Adults + Kids)', "=SUM('" + RESPONSES_SHEET_NAME + "'!F2:F" + lastRow + ")"]
-    ]);
-  } else {
-    summarySheet.getRange('A4:B7').setValues([
-      ['Total RSVP Entries', 0],
-      ['Total Adults Attending', 0],
-      ['Total Kids Attending', 0],
-      ['Total Guests (Adults + Kids)', 0]
-    ]);
-  }
-
-  // Event Breakdown Table
-  summarySheet.getRange('A9:D9').setValues([['Celebration Event', 'Date & Time', 'Parties Attending (RSVPs)', 'Total Guests Attending']]);
-  summarySheet.getRange('A9:D9').setBackground('#8B1E3F').setFontColor('#FFFFFF').setFontWeight('bold').setHorizontalAlignment('center');
-
-  if (lastRow > 1) {
-    summarySheet.getRange('A10:D13').setValues([
-      [
-        'Haldi Ceremony',
-        'Friday, 18 Dec • Morning',
-        "=COUNTIF('" + RESPONSES_SHEET_NAME + "'!G2:G" + lastRow + ', "Yes")',
-        "=SUMIF('" + RESPONSES_SHEET_NAME + "'!G2:G" + lastRow + ', "Yes", \'' + RESPONSES_SHEET_NAME + "'!F2:F" + lastRow + ')'
-      ],
-      [
-        'Marriage (Wedding)',
-        'Friday, 18 Dec • 7:05 PM',
-        "=COUNTIF('" + RESPONSES_SHEET_NAME + "'!H2:H" + lastRow + ', "Yes")',
-        "=SUMIF('" + RESPONSES_SHEET_NAME + "'!H2:H" + lastRow + ', "Yes", \'' + RESPONSES_SHEET_NAME + "'!F2:F" + lastRow + ')'
-      ],
-      [
-        'Sangeet & Cocktail',
-        'Saturday, 19 Dec • 6:00 PM',
-        "=COUNTIF('" + RESPONSES_SHEET_NAME + "'!I2:I" + lastRow + ', "Yes")',
-        "=SUMIF('" + RESPONSES_SHEET_NAME + "'!I2:I" + lastRow + ', "Yes", \'' + RESPONSES_SHEET_NAME + "'!F2:F" + lastRow + ')'
-      ],
-      [
-        'Satyanarayana Vratham',
-        'Sunday, 20 Dec • 11:00 AM',
-        "=COUNTIF('" + RESPONSES_SHEET_NAME + "'!J2:J" + lastRow + ', "Yes")',
-        "=SUMIF('" + RESPONSES_SHEET_NAME + "'!J2:J" + lastRow + ', "Yes", \'' + RESPONSES_SHEET_NAME + "'!F2:F" + lastRow + ')'
-      ]
-    ]);
-  } else {
-    summarySheet.getRange('A10:D13').setValues([
-      ['Haldi Ceremony', 'Friday, 18 Dec • Morning', 0, 0],
-      ['Marriage (Wedding)', 'Friday, 18 Dec • 7:05 PM', 0, 0],
-      ['Sangeet & Cocktail', 'Saturday, 19 Dec • 6:00 PM', 0, 0],
-      ['Satyanarayana Vratham', 'Sunday, 20 Dec • 11:00 AM', 0, 0]
-    ]);
-  }
-
-  summarySheet.getRange('B4:B7').setHorizontalAlignment('center').setFontWeight('bold');
-  summarySheet.getRange('C10:D13').setHorizontalAlignment('center').setFontWeight('bold');
-  summarySheet.autoResizeColumns(1, 4);
 }
 
 function doPost(e) {
@@ -157,12 +107,18 @@ function doPost(e) {
 
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    setupSheets();
-
-    var respSheet = ss.getSheetByName(RESPONSES_SHEET_NAME);
-    if (!respSheet) {
-      respSheet = ss.getSheets()[0];
+    var sheet = ss.getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      var sheets = ss.getSheets();
+      if (sheets.length === 1 && sheets[0].getName() === 'Sheet1') {
+        sheets[0].setName(SHEET_NAME);
+        sheet = sheets[0];
+      } else {
+        sheet = ss.insertSheet(SHEET_NAME, 0);
+      }
     }
+
+    setupSheet(sheet);
 
     var data = {};
     if (e && e.postData && e.postData.contents) {
@@ -209,66 +165,63 @@ function doPost(e) {
     ];
 
     // =========================================================================
-    // EDIT IN-PLACE LOGIC: Modify existing row instead of adding duplicate row
+    // EDIT IN-PLACE LOGIC: Match existing row (Row 6 onwards) and update in place
     // =========================================================================
     var updated = false;
     var targetRowIndex = -1;
-    var lastRow = respSheet.getLastRow();
+    var lastRow = sheet.getLastRow();
 
-    if (lastRow > 1) {
-      var allData = respSheet.getRange(2, 1, lastRow - 1, 13).getValues();
+    if (lastRow >= 6) {
+      var allData = sheet.getRange(6, 1, lastRow - 5, 13).getValues();
 
       // Pass 1: Match by unique submissionId (Col M, index 12)
       if (submissionId) {
         for (var i = 0; i < allData.length; i++) {
           var rowSubId = String(allData[i][12] || '').trim();
           if (rowSubId && rowSubId === submissionId) {
-            targetRowIndex = i + 2;
+            targetRowIndex = i + 6;
             break;
           }
         }
       }
 
-      // Pass 2: Match by email (Col C, index 2)
+      // Pass 2: Match by originalEmail or email (Col C, index 2)
       if (targetRowIndex === -1 && (originalEmail || email)) {
         var searchEmail = (originalEmail || email).toLowerCase();
         for (var i = 0; i < allData.length; i++) {
           var rowEmail = String(allData[i][2] || '').trim().toLowerCase();
           if (rowEmail && rowEmail === searchEmail) {
-            targetRowIndex = i + 2;
+            targetRowIndex = i + 6;
             break;
           }
         }
       }
 
-      // Pass 3: Match by name if marked as an update
+      // Pass 3: Match by originalName or name if requested as update
       if (targetRowIndex === -1 && isUpdateReq && (originalName || name)) {
         var searchName = (originalName || name).toLowerCase();
         for (var i = 0; i < allData.length; i++) {
           var rowName = String(allData[i][1] || '').trim().toLowerCase();
           if (rowName && rowName === searchName) {
-            targetRowIndex = i + 2;
+            targetRowIndex = i + 6;
             break;
           }
         }
       }
 
-      // If an existing record is found, MODIFY IN-PLACE
+      // If an existing row was matched, MODIFY IT IN PLACE!
       if (targetRowIndex !== -1) {
-        var prevTimestamp = respSheet.getRange(targetRowIndex, 1).getValue();
+        var prevTimestamp = sheet.getRange(targetRowIndex, 1).getValue();
         rowValues[0] = prevTimestamp ? (prevTimestamp + ' (Edited ' + now + ')') : now;
-        respSheet.getRange(targetRowIndex, 1, 1, rowValues.length).setValues([rowValues]);
+        sheet.getRange(targetRowIndex, 1, 1, rowValues.length).setValues([rowValues]);
         updated = true;
       }
     }
 
-    // Only append if it is a brand new submission
+    // If brand new entry, append to sheet
     if (!updated) {
-      respSheet.appendRow(rowValues);
+      sheet.appendRow(rowValues);
     }
-
-    // Update totals dashboard immediately
-    updateSummarySheet(ss);
 
     return ContentService
       .createTextOutput(JSON.stringify({ status: 'success', updated: updated, row: targetRowIndex }))
@@ -285,11 +238,12 @@ function doPost(e) {
 
 function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  setupSheets();
+  var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
+  setupSheet(sheet);
   return ContentService
     .createTextOutput(JSON.stringify({
       status: 'active',
-      message: 'Hitesh & Neha Wedding RSVP Endpoint is online with Event Totals & In-Place Editing.'
+      message: 'Hitesh & Neha Wedding RSVP Endpoint is online with Unified Dashboard and In-Place Editing.'
     }))
     .setMimeType(ContentService.MimeType.JSON);
 }
