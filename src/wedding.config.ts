@@ -54,8 +54,10 @@ Hitesh & Neha`,
 Cordially Invites You to Celebrate
 the Wedding of
 Hitesh & Neha`,
-    doorsButtonText: 'Tap to open the doors',
+    doorsButtonText: 'Open Invitation',
     doorsSubText: 'Music will play softly',
+    introVideo: '/client-images/intro.mp4',
+    introPoster: '/client-images/couple.jpg',
   },
 
   // -------------------------------------------------------------
@@ -186,6 +188,8 @@ export const weddingData = {
   cityName: weddingConfig.venue.cityName,
   invitationLine: weddingConfig.invitation.invitationLine,
   familyLine: weddingConfig.invitation.familyLine,
+  introVideo: weddingConfig.invitation.introVideo,
+  introPoster: weddingConfig.invitation.introPoster,
   events: weddingConfig.events,
   banner: weddingConfig.banner,
 };

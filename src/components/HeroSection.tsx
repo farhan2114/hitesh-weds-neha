@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { assets } from '../data/assets';
 import { weddingConfig, weddingData } from '../wedding.config';
-import { playAudio } from '../lib/audio';
+import { playAudio, primeAudio } from '../lib/audio';
 
 const paperCards = [
   { x: -320, y: 180, r: -24, d: 0, w: 120, h: 158 },
@@ -16,10 +16,22 @@ const paperCards = [
 export const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const [opened, setOpened] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Lock scroll until opened
+  const [opened, setOpened] = useState(false);
+  const [started, setStarted] = useState(false);
+  const [videoOver, setVideoOver] = useState(false);
+  const [fading, setFading] = useState(false);
+
+  /* ── Configure video element for iOS Safari on mount ── */
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    vid.defaultMuted = true;
+  }, []);
+
+  /* ── Lock scroll until invitation revealed ── */
   useEffect(() => {
     const docEl = document.documentElement;
     if (opened) {
@@ -51,7 +63,7 @@ export const HeroSection: React.FC = () => {
     };
   }, [opened]);
 
-  // Setup GSAP animation
+  /* ── GSAP invite-card reveal ── */
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -64,12 +76,12 @@ export const HeroSection: React.FC = () => {
         onComplete: () => setOpened(true),
       });
 
-      tl.to('.doors-button', { autoAlpha: 0, duration: 0.25, pointerEvents: 'none', ease: 'power2.out' }, 'open')
-        .to('.door-l', { rotateY: -104, duration: prefersReduced ? 0.3 : 2.1, ease: 'power3.inOut' }, 'open')
-        .to('.door-r', { rotateY: 104, duration: prefersReduced ? 0.3 : 2.1, ease: 'power3.inOut' }, 'open')
-        .to('.doors-container', { autoAlpha: 0, duration: 0.4, pointerEvents: 'none', ease: 'power2.out', onComplete: () => setOpened(true) }, 'open+=1.9')
-        .to('.door-shadow', { autoAlpha: 0, duration: 1.4 }, 'open')
-        .fromTo('.temple', { scale: 1.18, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 2.2, ease: 'power2.out' }, 'open+=0.2')
+      tl.fromTo(
+        '.temple',
+        { scale: 1.18, autoAlpha: 0 },
+        { scale: 1, autoAlpha: 1, duration: prefersReduced ? 0.4 : 1.8, ease: 'power2.out' },
+        0
+      )
         .fromTo(
           '.paper',
           { autoAlpha: 0, x: 0, y: 60, scale: 0.4, rotate: 0 },
@@ -79,23 +91,23 @@ export const HeroSection: React.FC = () => {
             y: (i) => paperCards[i].y,
             scale: 1,
             rotate: (i) => paperCards[i].r,
-            duration: 1.9,
+            duration: prefersReduced ? 0.4 : 1.6,
             ease: 'power2.out',
             stagger: 0.07,
           },
-          'open+=0.85'
+          prefersReduced ? 0 : 0.4
         )
         .fromTo(
           '.invite-card',
           { autoAlpha: 0, y: 140, scale: 0.62, rotateX: 42 },
-          { autoAlpha: 1, y: 0, scale: 1, rotateX: 0, duration: 1.6, ease: 'power4.out' },
-          'open+=1.15'
+          { autoAlpha: 1, y: 0, scale: 1, rotateX: 0, duration: prefersReduced ? 0.4 : 1.5, ease: 'power4.out' },
+          prefersReduced ? 0 : 0.6
         )
         .fromTo(
           '.invite-line',
           { autoAlpha: 0, y: 22 },
-          { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.13, ease: 'power3.out' },
-          '-=0.85'
+          { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' },
+          '-=0.8'
         );
 
       tlRef.current = tl;
@@ -104,12 +116,43 @@ export const HeroSection: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleOpen = () => {
-    if (clicked) return;
-    setClicked(true);
+  /* ── Video ends or user skips ── */
+  const handleVideoEnd = useCallback(() => {
+    if (videoOver || fading) return;
+    setFading(true);
     playAudio();
     tlRef.current?.play();
-  };
+    setTimeout(() => {
+      setVideoOver(true);
+    }, 1100);
+  }, [videoOver, fading]);
+
+  /* ── Smoothly trigger fadeout right before video ends to prevent freeze-frames ── */
+  const handleTimeUpdate = useCallback(() => {
+    const vid = videoRef.current;
+    if (!vid || fading || videoOver) return;
+    if (vid.duration && vid.duration > 2 && vid.currentTime >= vid.duration - 0.8) {
+      handleVideoEnd();
+    }
+  }, [fading, videoOver, handleVideoEnd]);
+
+  /* ── Direct user-gesture playback for Safari iOS compatibility ── */
+  const handleStart = useCallback(() => {
+    setStarted(true);
+    primeAudio(); // Primes and unlocks audio element within direct user tap on iOS Safari
+    const vid = videoRef.current;
+    if (vid) {
+      vid.muted = true;
+      vid.defaultMuted = true;
+      const playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn('Video playback restricted or file missing:', err);
+          handleVideoEnd();
+        });
+      }
+    }
+  }, [handleVideoEnd]);
 
   return (
     <section
@@ -157,7 +200,7 @@ export const HeroSection: React.FC = () => {
             <p className="invite-line eyebrow mt-6">{weddingData.dateShort}</p>
             <div className="invite-line mx-auto mt-5 max-w-md text-center">
               <p className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-gold-deep font-semibold">
-                The Adusumalli Family
+                {weddingConfig.invitation.familyTitle || 'The Adusumalli Family'}
               </p>
               <p className="mt-1.5 font-serif italic text-sm sm:text-base text-foreground/80">
                 Cordially Invites You to Celebrate the Wedding of
@@ -183,42 +226,107 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Temple Doors ── */}
-      {!opened && (
-        <div className="doors-container absolute inset-0 z-30 flex [perspective:1600px]">
+      {/* ── Intro Video Overlay (Ronish weds Hanisha style) ── */}
+      {!videoOver && (
+        <div
+          className="fixed inset-0 z-[200] overflow-hidden bg-black transition-all duration-1000 ease-out"
+          style={{
+            opacity: fading ? 0 : 1,
+            transform: fading ? 'scale(1.04)' : 'scale(1)',
+            filter: fading ? 'blur(6px)' : 'blur(0px)',
+            pointerEvents: fading ? 'none' : 'auto',
+          }}
+        >
+          {/* Instant First-Frame Poster (renders 0ms without waiting for video decoding) */}
+          <img
+            src={weddingData.introPoster || '/client-images/couple.jpg'}
+            alt=""
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-center pointer-events-none"
+          />
+
+          {/* Video — configured with iOS Safari webkit-playsinline and muted attributes */}
+          <video
+            ref={videoRef}
+            src={weddingData.introVideo || '/client-images/intro.mp4'}
+            poster={weddingData.introPoster || '/client-images/couple.jpg'}
+            muted
+            playsInline
+            autoPlay={false}
+            preload="auto"
+            disablePictureInPicture
+            disableRemotePlayback
+            onTimeUpdate={handleTimeUpdate}
+            onEnded={handleVideoEnd}
+            onError={handleVideoEnd}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            style={{ transform: 'translateZ(0)', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
+          />
+
+          {/* Card overlay on top of frozen first frame — smoothly fades on tap */}
           <div
-            className="door-l relative h-full w-1/2 origin-left bg-cover bg-right"
-            style={{ backgroundImage: `url(${assets.templeDoor})`, transformStyle: 'preserve-3d' }}
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/45 backdrop-blur-[2px] px-4 transition-opacity duration-500 ease-out"
+            style={{
+              opacity: started ? 0 : 1,
+              pointerEvents: started ? 'none' : 'auto',
+            }}
           >
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/50 to-transparent" />
-          </div>
-          <div
-            className="door-r relative h-full w-1/2 origin-right bg-cover bg-left"
-            style={{ backgroundImage: `url(${assets.templeDoor})`, transformStyle: 'preserve-3d' }}
-          >
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/50 to-transparent" />
+            <div className="paper-card arch-top relative flex flex-col items-center px-6 py-9 text-center sm:px-14 sm:py-14 w-[85%] max-w-[320px] sm:max-w-sm border border-gold/50 shadow-2xl">
+              {/* Mandala: spins centered above card */}
+              <div className="pointer-events-none absolute -top-11 sm:-top-14 left-1/2 -translate-x-1/2">
+                <img
+                  src={assets.mandalaGold}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-20 sm:w-28 animate-[spin_16s_linear_infinite]"
+                />
+              </div>
+
+              {/* Date */}
+              <p className="eyebrow mt-5 sm:mt-6 text-[0.62rem] text-gold-deep">{weddingData.dateShort}</p>
+
+              {/* Names */}
+              <h2 className="mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-x-1.5 font-display text-2xl min-[360px]:text-3xl sm:text-4xl leading-tight">
+                <span className="text-gold-foil animate-foil">{weddingData.groom}</span>
+                <span className="font-title text-base sm:text-lg text-maroon sm:text-2xl">&amp;</span>
+                <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
+              </h2>
+
+              {/* Divider */}
+              <div className="rule-gold mx-auto my-5 sm:my-6 w-24 sm:w-32 opacity-70" />
+
+              {/* Tap to begin */}
+              <button
+                type="button"
+                onClick={handleStart}
+                aria-label="Tap to open the invitation"
+                className="group relative overflow-hidden rounded-full border border-gold/70 bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 px-8 py-3.5 transition-all hover:border-gold hover:bg-gold/30 active:scale-95 cursor-pointer shadow-lg"
+              >
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-gold/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <span className="relative font-title text-[0.7rem] uppercase tracking-[0.34em] text-gold-deep font-bold">
+                  Open Invitation
+                </span>
+              </button>
+
+              <p className="mt-4 text-[0.58rem] uppercase tracking-[0.22em] text-muted-foreground">
+                Music will play softly
+              </p>
+            </div>
           </div>
 
-          {!clicked && (
-            <button
-              type="button"
-              onClick={handleOpen}
-              aria-label="Open the temple doors and enter the invitation"
-              className="doors-button absolute inset-0 flex flex-col items-center justify-end gap-3 pb-24 focus:outline-none cursor-pointer"
-            >
-              <span className="rounded-full border border-gold/70 bg-black/35 px-8 py-4 font-title text-[0.7rem] uppercase tracking-[0.32em] text-paper backdrop-blur-sm transition-colors hover:bg-black/55">
-                {weddingConfig.invitation.doorsButtonText || 'Tap to open the doors'}
-              </span>
-              <span className="text-[0.65rem] uppercase tracking-[0.24em] text-paper/70">
-                {weddingConfig.invitation.doorsSubText || 'Music will play softly'}
-              </span>
-            </button>
-          )}
+          {/* Skip button — only visible after video starts playing */}
+          <button
+            type="button"
+            onClick={handleVideoEnd}
+            aria-label="Skip intro"
+            className={`absolute bottom-6 right-5 z-20 rounded-full border border-gold/50 bg-black/60 px-5 py-2.5 font-title text-[0.68rem] uppercase tracking-[0.25em] text-paper backdrop-blur-md transition-all duration-500 hover:bg-black/80 cursor-pointer sm:bottom-10 sm:right-10 ${
+              started ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+          >
+            Skip intro
+          </button>
         </div>
       )}
-
-      {/* Door Shadow Overlay */}
-      <div className="door-shadow pointer-events-none absolute inset-0 z-40 bg-black/25" />
     </section>
   );
 };
