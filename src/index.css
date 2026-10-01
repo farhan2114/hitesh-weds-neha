@@ -96,6 +96,10 @@
   font-family: 'Suranna', 'Peddana', 'Gautami', 'Nirmala UI', serif;
 }
 
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
 .doors-locked,
 html.doors-locked,
 body.doors-locked {

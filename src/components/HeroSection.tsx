@@ -206,10 +206,10 @@ export const HeroSection: React.FC = () => {
                 Cordially Invites You to Celebrate the Wedding of
               </p>
             </div>
-            <h1 className="invite-line mt-2.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 font-display text-2xl min-[360px]:text-3xl min-[480px]:text-4xl sm:text-5xl md:text-6xl leading-[1.08] break-words">
-              <span className="text-gold-foil animate-foil">{weddingData.groom}</span>
-              <span className="mx-1 font-title text-base sm:text-xl md:text-2xl align-middle text-maroon">&amp;</span>
-              <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
+            <h1 className="invite-line mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-0.5 font-script text-4xl min-[360px]:text-5xl min-[480px]:text-6xl sm:text-7xl md:text-8xl leading-[1.15] text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)] break-words">
+              <span>{weddingData.groom}</span>
+              <span className="font-title text-lg sm:text-2xl md:text-3xl align-middle text-[#8B1E3F]">&amp;</span>
+              <span>{weddingData.bride}</span>
             </h1>
             <div className="invite-line rule-gold mx-auto my-3 sm:my-3.5 w-1/2" />
             <p className="invite-line font-title text-sm sm:text-base tracking-wide text-foreground/90">{weddingData.dateLabel}</p>
@@ -303,10 +303,10 @@ export const HeroSection: React.FC = () => {
               <p className="eyebrow mt-5 sm:mt-6 text-[0.62rem] text-gold-deep">{weddingData.dateShort}</p>
 
               {/* Names */}
-              <h2 className="mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-x-1.5 font-display text-2xl min-[360px]:text-3xl sm:text-4xl leading-tight">
-                <span className="text-gold-foil animate-foil">{weddingData.groom}</span>
-                <span className="font-title text-base sm:text-lg text-maroon sm:text-2xl">&amp;</span>
-                <span className="text-gold-foil animate-foil">{weddingData.bride}</span>
+              <h2 className="mt-2.5 sm:mt-3 flex flex-wrap items-center justify-center gap-x-2.5 font-script text-3xl min-[360px]:text-4xl sm:text-5xl md:text-6xl leading-tight text-[#4A1521] font-normal drop-shadow-[0_1px_2px_rgba(74,21,33,0.15)]">
+                <span>{weddingData.groom}</span>
+                <span className="font-title text-base sm:text-xl text-[#8B1E3F]">&amp;</span>
+                <span>{weddingData.bride}</span>
               </h2>
 
               {/* Divider */}

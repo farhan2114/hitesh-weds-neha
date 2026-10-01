@@ -54,6 +54,7 @@ export default {
         title: ['"Marcellus"', 'Georgia', 'serif'],
         sans: ['"Karla"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         telugu: ['"Suranna"', '"Peddana"', '"Gautami"', '"Nirmala UI"', 'serif'],
+        script: ['"Great Vibes"', 'cursive'],
       },
       borderRadius: {
         lg: 'var(--radius)',
