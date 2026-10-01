@@ -139,7 +139,7 @@ export const HeroSection: React.FC = () => {
   /* ── Direct user-gesture playback for Safari iOS compatibility ── */
   const handleStart = useCallback(() => {
     setStarted(true);
-    primeAudio(); // Primes and unlocks audio element within direct user tap on iOS Safari
+    playAudio(true); // Plays music at the exact same moment the video starts playing
     const vid = videoRef.current;
     if (vid) {
       vid.muted = true;
@@ -265,7 +265,8 @@ export const HeroSection: React.FC = () => {
 
           {/* Card overlay on top of frozen first frame — smoothly fades on tap */}
           <div
-            className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/45 backdrop-blur-[2px] px-4 transition-opacity duration-500 ease-out"
+            onClick={!started ? handleStart : undefined}
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/45 backdrop-blur-[2px] px-4 transition-opacity duration-500 ease-out cursor-pointer"
             style={{
               opacity: started ? 0 : 1,
               pointerEvents: started ? 'none' : 'auto',

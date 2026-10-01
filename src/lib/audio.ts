@@ -47,21 +47,25 @@ export function primeAudio() {
  * Called when the intro video ends or is skipped.
  * Unmutes the primed audio, resets to the beginning, and sets volume.
  */
-export function playAudio() {
+export function playAudio(resetToStart = false) {
   if (typeof window === 'undefined') return;
   shouldBePlaying = true;
   const audio = getAudio();
 
-  audio.currentTime = 0;
+  if (resetToStart) {
+    audio.currentTime = 0;
+  }
   audio.muted = false;
   audio.volume = 0.45;
 
-  const p = audio.play();
-  if (p !== undefined) {
-    p.catch(() => {
-      // If iOS delayed playback, ensure next interaction resumes it
-      armInteractionUnlock();
-    });
+  if (audio.paused) {
+    const p = audio.play();
+    if (p !== undefined) {
+      p.catch(() => {
+        // If iOS delayed playback, ensure next interaction resumes it
+        armInteractionUnlock();
+      });
+    }
   }
   notify();
 }
