@@ -112,45 +112,7 @@ export const RsvpSection: React.FC = () => {
       originalName: prevName,
     };
 
-    setIsSubmitting(true);
-
-    try {
-      confetti({
-        particleCount: 130,
-        spread: 360,
-        startVelocity: 45,
-        origin: { x: 0.5, y: 0.5 },
-        colors: ["#D4AF37", "#8B1E3F", "#F59E0B", "#E5A93C", "#FFF3D6", "#FFFFFF"],
-        zIndex: 99999,
-      });
-
-      await saveRsvp({
-        name: data.name,
-        email: data.email,
-        adults: data.adultsCount,
-        kids: data.kidsCount,
-        guest_count: data.guestCount,
-        attending_events: attendingList || "None",
-        declined_events: declinedList || "None",
-        haldi: attendance["Haldi"] === "attending" ? "Yes" : "No",
-        marriage: attendance["Marriage"] === "attending" ? "Yes" : "No",
-        sangeet: attendance["Sangeet & Cocktail"] === "attending" ? "Yes" : "No",
-        vratham: attendance["Satyanarayana Vratham"] === "attending" ? "Yes" : "No",
-        note: data.note || "",
-        isUpdate: isEditing,
-        originalEmail: prevEmail,
-        originalName: prevName,
-        submissionId: currentSubmissionId,
-      });
-    } catch (err) {
-      console.warn("Save RSVP non-blocking error:", err);
-    }
-
-    setIsSubmitting(false);
-    setIsEditing(false);
-    setOriginalEmail(data.email);
-    setOriginalName(data.name);
-
+    // Optimistic instant UI update: transition immediately with zero delay
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch {
@@ -158,6 +120,41 @@ export const RsvpSection: React.FC = () => {
     }
 
     setSubmitted(data);
+    setIsEditing(false);
+    setIsSubmitting(false);
+    setOriginalEmail(data.email);
+    setOriginalName(data.name);
+
+    confetti({
+      particleCount: 130,
+      spread: 360,
+      startVelocity: 45,
+      origin: { x: 0.5, y: 0.5 },
+      colors: ["#D4AF37", "#8B1E3F", "#F59E0B", "#E5A93C", "#FFF3D6", "#FFFFFF"],
+      zIndex: 99999,
+    });
+
+    // Save to Google Sheet in the background asynchronously without blocking UI
+    saveRsvp({
+      name: data.name,
+      email: data.email,
+      adults: data.adultsCount,
+      kids: data.kidsCount,
+      guest_count: data.guestCount,
+      attending_events: attendingList || "None",
+      declined_events: declinedList || "None",
+      haldi: attendance["Haldi"] === "attending" ? "Yes" : "No",
+      marriage: attendance["Marriage"] === "attending" ? "Yes" : "No",
+      sangeet: attendance["Sangeet & Cocktail"] === "attending" ? "Yes" : "No",
+      vratham: attendance["Satyanarayana Vratham"] === "attending" ? "Yes" : "No",
+      note: data.note || "",
+      isUpdate: isEditing,
+      originalEmail: prevEmail,
+      originalName: prevName,
+      submissionId: currentSubmissionId,
+    }).catch((err) => {
+      console.warn("Background Google Sheet RSVP sync error:", err);
+    });
   };
 
   const handleEditRsvp = () => {
