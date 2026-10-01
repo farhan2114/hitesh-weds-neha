@@ -26,94 +26,93 @@ function setupSheet(sheet) {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     sheet = ss.getSheetByName(SHEET_NAME);
     if (!sheet) {
-      var sheets = ss.getSheets();
-      if (sheets.length === 1 && sheets[0].getName() === 'Sheet1') {
-        sheets[0].setName(SHEET_NAME);
-        sheet = sheets[0];
-      } else {
-        sheet = ss.getActiveSheet();
-      }
+      sheet = ss.getActiveSheet();
+      try {
+        sheet.setName(SHEET_NAME);
+      } catch (err) {}
     }
   }
   if (!sheet) return;
 
-  if (sheet.getLastRow() === 0) {
-    // 1. Dashboard Title (Row 1)
-    sheet.getRange('A1:M1').merge();
-    sheet.getRange('A1').setValue('💍 HITESH & NEHA WEDDING — LIVE RSVP & EVENT TOTALS DASHBOARD');
-    sheet.getRange('A1').setBackground('#8B1E3F').setFontColor('#FFFFFF').setFontWeight('bold').setFontSize(13).setHorizontalAlignment('center');
-    sheet.setRowHeight(1, 36);
+  // 1. Dashboard Title (Row 1)
+  sheet.getRange('A1:M1').merge();
+  sheet.getRange('A1').setValue('💍 HITESH & NEHA WEDDING — LIVE RSVP & EVENT TOTALS DASHBOARD');
+  sheet.getRange('A1').setBackground('#8B1E3F').setFontColor('#FFFFFF').setFontWeight('bold').setFontSize(13).setHorizontalAlignment('center');
+  sheet.setRowHeight(1, 36);
 
-    // 2. Dashboard Metric Labels (Row 2)
-    var metricHeaders = [
-      'Total RSVPs',
-      'Total Adults',
-      'Total Kids',
-      'Total Guests',
-      'Haldi Guests',
-      'Marriage Guests',
-      'Sangeet Guests',
-      'Vratham Guests',
-      '',
-      '',
-      '',
-      '',
-      ''
-    ];
-    sheet.getRange(2, 1, 1, 13).setValues([metricHeaders]);
-    sheet.getRange('A2:H2').setBackground('#D4AF37').setFontColor('#FFFFFF').setFontWeight('bold').setHorizontalAlignment('center');
-    sheet.setRowHeight(2, 28);
+  // 2. Dashboard Metric Labels (Row 2)
+  var metricHeaders = [
+    'Total RSVPs',
+    'Total Adults',
+    'Total Kids',
+    'Total Guests',
+    'Haldi Guests',
+    'Marriage Guests',
+    'Sangeet Guests',
+    'Vratham Guests',
+    '',
+    '',
+    '',
+    '',
+    ''
+  ];
+  sheet.getRange(2, 1, 1, 13).setValues([metricHeaders]);
+  sheet.getRange('A2:H2').setBackground('#D4AF37').setFontColor('#FFFFFF').setFontWeight('bold').setHorizontalAlignment('center');
+  sheet.setRowHeight(2, 28);
 
-    // 3. Live Dashboard Formulas (Row 3)
-    var formulas = [
-      '=IF(COUNTA(B6:B)=0, 0, COUNTA(B6:B))',
-      '=IF(COUNTA(B6:B)=0, 0, SUM(D6:D))',
-      '=IF(COUNTA(B6:B)=0, 0, SUM(E6:E))',
-      '=IF(COUNTA(B6:B)=0, 0, SUM(F6:F))',
-      '=IF(COUNTA(B6:B)=0, 0, SUMIF(G6:G, "Yes", F6:F))',
-      '=IF(COUNTA(B6:B)=0, 0, SUMIF(H6:H, "Yes", F6:F))',
-      '=IF(COUNTA(B6:B)=0, 0, SUMIF(I6:I, "Yes", F6:F))',
-      '=IF(COUNTA(B6:B)=0, 0, SUMIF(J6:J, "Yes", F6:F))',
-      '',
-      '',
-      '',
-      '',
-      ''
-    ];
-    sheet.getRange(3, 1, 1, 13).setValues([formulas]);
-    sheet.getRange('A3:H3').setFontWeight('bold').setFontSize(12).setHorizontalAlignment('center').setBackground('#FFF9E6');
-    sheet.setRowHeight(3, 30);
+  // 3. Live Dashboard Formulas (Row 3)
+  var formulas = [
+    '=IF(COUNTA(B6:B)=0, 0, COUNTA(B6:B))',
+    '=IF(COUNTA(B6:B)=0, 0, SUM(D6:D))',
+    '=IF(COUNTA(B6:B)=0, 0, SUM(E6:E))',
+    '=IF(COUNTA(B6:B)=0, 0, SUM(F6:F))',
+    '=IF(COUNTA(B6:B)=0, 0, SUMIF(G6:G, "Yes", F6:F))',
+    '=IF(COUNTA(B6:B)=0, 0, SUMIF(H6:H, "Yes", F6:F))',
+    '=IF(COUNTA(B6:B)=0, 0, SUMIF(I6:I, "Yes", F6:F))',
+    '=IF(COUNTA(B6:B)=0, 0, SUMIF(J6:J, "Yes", F6:F))',
+    '',
+    '',
+    '',
+    '',
+    ''
+  ];
+  sheet.getRange(3, 1, 1, 13).setValues([formulas]);
+  sheet.getRange('A3:H3').setFontWeight('bold').setFontSize(12).setHorizontalAlignment('center').setBackground('#FFF9E6');
+  sheet.setRowHeight(3, 30);
 
-    // 4. Blank divider (Row 4)
-    sheet.setRowHeight(4, 15);
+  // 4. Blank divider (Row 4)
+  sheet.getRange('A4:M4').clearContent().setBackground('#FFFFFF');
+  sheet.setRowHeight(4, 15);
 
-    // 5. All Guest Response Fields Header (Row 5)
-    var fieldHeaders = [
-      'Timestamp',
-      'Name',
-      'Mail ID',
-      'Adults',
-      'Kids',
-      'Total Guests',
-      'Haldi',
-      'Marriage',
-      'Sangeet & Cocktail',
-      'Satyanarayana Vratham',
-      'Attending Events Summary',
-      'Blessings / Note',
-      'Submission ID'
-    ];
-    sheet.getRange(5, 1, 1, fieldHeaders.length).setValues([fieldHeaders]);
-    sheet.getRange(5, 1, 1, fieldHeaders.length)
-      .setBackground('#8B1E3F')
-      .setFontColor('#FFFFFF')
-      .setFontWeight('bold')
-      .setHorizontalAlignment('center');
-    sheet.setRowHeight(5, 34);
+  // 5. All Guest Response Fields Header (Row 5)
+  var fieldHeaders = [
+    'Timestamp',
+    'Name',
+    'Mail ID',
+    'Adults',
+    'Kids',
+    'Total Guests',
+    'Haldi',
+    'Marriage',
+    'Sangeet & Cocktail',
+    'Satyanarayana Vratham',
+    'Attending Events Summary',
+    'Blessings / Note',
+    'Submission ID'
+  ];
+  sheet.getRange(5, 1, 1, fieldHeaders.length).setValues([fieldHeaders]);
+  sheet.getRange(5, 1, 1, fieldHeaders.length)
+    .setBackground('#8B1E3F')
+    .setFontColor('#FFFFFF')
+    .setFontWeight('bold')
+    .setHorizontalAlignment('center');
+  sheet.setRowHeight(5, 34);
 
-    // Freeze top 5 rows so Dashboard and Headers are always visible
-    sheet.setFrozenRows(5);
-  }
+  // Freeze top 5 rows so Dashboard and Headers are always visible
+  sheet.setFrozenRows(5);
+
+  // Auto-resize columns
+  sheet.autoResizeColumns(1, 13);
 }
 
 function doPost(e) {
