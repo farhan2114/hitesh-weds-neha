@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
+import { ChevronDown } from 'lucide-react';
 import { assets } from '../data/assets';
 import { weddingConfig, weddingData } from '../wedding.config';
 import { playAudio, primeAudio } from '../lib/audio';
@@ -219,7 +220,30 @@ export const HeroSection: React.FC = () => {
               href="#rsvp"
               className="invite-line mt-8 inline-flex items-center gap-2 border border-gold/60 bg-transparent px-6 py-3 text-[0.7rem] uppercase tracking-[0.3em] text-gold-deep transition-colors hover:bg-gold/10"
             >
-              RSVP &amp; Blessings
+              RSVP
+            </a>
+
+            {/* Scroll Down Indicator (Just like Hanisha) */}
+            <a
+              href="#intro"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.getElementById('intro');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                }
+              }}
+              aria-label="Scroll down to invitation details"
+              className="invite-line group mt-7 sm:mt-8 flex flex-col items-center gap-1 cursor-pointer focus:outline-none transition-transform duration-300 hover:scale-105"
+            >
+              <span className="font-title text-xs sm:text-sm uppercase tracking-[0.26em] text-[#4A1521] font-bold -mr-[0.26em] select-none text-center animate-scroll-blink">
+                Scroll Down
+              </span>
+              <div className="animate-arrow-down flex items-center justify-center">
+                <ChevronDown className="size-4 sm:size-5 text-[#8A6D3B] stroke-[2.5] drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(218,165,32,0.5)] group-hover:text-[#4A1521] transition-colors" />
+              </div>
             </a>
           </div>
         </div>

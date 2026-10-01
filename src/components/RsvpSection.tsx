@@ -498,8 +498,8 @@ export const RsvpSection: React.FC = () => {
                   className="mt-8 w-full rounded-full border border-gold/70 bg-gradient-to-r from-[#D4AF37] via-[#E5B842] to-[#D4AF37] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#2A0810] font-bold shadow-[0_4px_20px_rgba(212,175,55,0.35)] transition-all hover:scale-[1.01] hover:shadow-[0_6px_24px_rgba(212,175,55,0.5)] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isSubmitting
-                    ? (isEditing ? 'Updating RSVP...' : 'Submitting RSVP & Blessings...')
-                    : (isEditing ? 'Update RSVP Response' : 'Confirm RSVP & Send Blessings')}
+                    ? (isEditing ? 'Updating RSVP...' : 'Submitting RSVP...')
+                    : (isEditing ? 'Update RSVP Response' : 'Confirm RSVP')}
                 </button>
               </form>
             </RevealOnScroll>
