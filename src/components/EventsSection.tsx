@@ -677,18 +677,18 @@ export const EventsSection: React.FC = () => {
                   className={`absolute inset-0 bg-gradient-to-r ${theme.gradientOverlay} pointer-events-none z-10 transition-opacity duration-300`}
                 />
 
-                {/* Gold Flower Outlines in Empty Spaces (Corners away from text) */}
+                {/* Hibiscus Flower Outlines in Empty Spaces (Corners away from text) */}
                 <img
-                  src="/assets/gold-flower-corner.png"
+                  src="/assets/flower-large.png"
                   alt=""
                   aria-hidden="true"
-                  className="pointer-events-none absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-28 xs:w-36 sm:w-60 md:w-68 h-auto opacity-65 sm:opacity-75 group-hover:opacity-90 select-none object-contain rotate-180 z-20 transition-all duration-500 group-hover:scale-105"
+                  className="pointer-events-none absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-24 xs:w-32 sm:w-52 md:w-60 h-auto opacity-50 sm:opacity-60 group-hover:opacity-75 select-none object-contain rotate-180 z-20 transition-all duration-500 group-hover:scale-105"
                 />
                 <img
-                  src="/assets/gold-flower-corner.png"
+                  src="/assets/flower-small.png"
                   alt=""
                   aria-hidden="true"
-                  className="pointer-events-none absolute -top-4 -right-4 sm:-top-5 sm:-right-5 w-24 xs:w-32 sm:w-52 md:w-56 h-auto opacity-45 sm:opacity-55 group-hover:opacity-75 select-none object-contain z-20 transition-all duration-500 group-hover:scale-105"
+                  className="pointer-events-none absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-20 xs:w-28 sm:w-44 md:w-48 h-auto opacity-40 sm:opacity-50 group-hover:opacity-65 select-none object-contain z-20 transition-all duration-500 group-hover:scale-105"
                 />
 
                 {/* Inner Golden Outline Frame */}

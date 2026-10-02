@@ -8,6 +8,8 @@ export const GratitudeSection: React.FC = () => {
   return (
     <section className="relative overflow-hidden px-5 py-24 sm:py-32">
       <SpinningMandala reverse className="-right-24 bottom-4 w-56 sm:w-80" />
+      <Ornament variant="large" className="-left-8 top-10 w-32 rotate-6 sm:w-44" />
+      <Ornament variant="small" className="-left-6 bottom-10 w-20 -rotate-12 sm:w-28" />
 
       <RevealOnScroll className="relative mx-auto max-w-4xl">
         <div className="paper-card relative overflow-hidden px-6 py-14 text-center sm:px-16 sm:py-20">

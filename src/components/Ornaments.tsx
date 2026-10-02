@@ -13,7 +13,7 @@ interface OrnamentProps {
 const ornamentSrc: Record<string, string> = {
   large: assets.flowerLarge,
   small: assets.flowerSmall,
-  gold: '/assets/gold-flower-corner.png',
+  gold: assets.flowerLarge,
   leaf: assets.leafLine,
 };
 
@@ -24,7 +24,7 @@ export const Ornament: React.FC<OrnamentProps> = ({ className = '', variant = 'l
       alt=""
       aria-hidden="true"
       loading="lazy"
-      className={`pointer-events-none absolute select-none opacity-95 sm:opacity-100 drop-shadow-[0_2px_10px_rgba(255,255,255,0.75)] drop-shadow-[0_4px_16px_rgba(168,59,0,0.3)] ${className}`}
+      className={`pointer-events-none absolute select-none opacity-85 sm:opacity-95 drop-shadow-[0_2px_8px_rgba(43,18,7,0.2)] ${className}`}
     />
   );
 };

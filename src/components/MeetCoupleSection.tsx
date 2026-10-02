@@ -9,6 +9,8 @@ export const MeetCoupleSection: React.FC = () => {
   return (
     <section id="couple" className="relative overflow-hidden px-5 pt-4 pb-16 sm:pt-6 sm:pb-24">
       <SpinningMandala className="-right-24 bottom-10 w-56 sm:w-72" />
+      <Ornament variant="large" className="-left-8 top-10 w-32 sm:w-44" />
+      <Ornament variant="small" className="-left-6 bottom-16 w-20 rotate-45 sm:w-28" />
 
       <div className="relative mx-auto max-w-4xl">
         <RevealOnScroll className="text-center">

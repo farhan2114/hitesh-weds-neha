@@ -7,6 +7,8 @@ export const IntroSection: React.FC = () => {
   return (
     <section id="intro" className="relative overflow-hidden px-5 pt-10 pb-4 text-center sm:pt-14 sm:pb-6">
       <SpinningMandala className="-left-16 sm:-left-20 top-1/2 w-48 sm:w-64 -translate-y-1/2" />
+      <Ornament variant="large" className="-right-6 top-8 w-28 rotate-12 sm:w-40" />
+      <Ornament variant="small" className="-right-8 bottom-6 w-20 -rotate-12 sm:w-28" />
 
       <RevealOnScroll>
         <p className="font-telugu text-2xl sm:text-3xl md:text-4xl text-gold-deep tracking-normal font-normal drop-shadow-sm">

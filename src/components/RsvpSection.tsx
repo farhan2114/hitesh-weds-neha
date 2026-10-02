@@ -189,6 +189,8 @@ export const RsvpSection: React.FC = () => {
   return (
     <section id="rsvp" className="relative overflow-hidden px-5 py-16 sm:py-24">
       <SpinningMandala className="-left-20 top-1/2 w-48 sm:w-64" />
+      <Ornament variant="large" className="-right-8 top-14 w-32 rotate-6 sm:w-44" />
+      <Ornament variant="small" className="-right-6 bottom-12 w-20 -rotate-12 sm:w-28" />
 
       <div className="relative mx-auto max-w-4xl">
         <RevealOnScroll className="text-center">
