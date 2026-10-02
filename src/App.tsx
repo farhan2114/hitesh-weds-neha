@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import { HeroSection } from './components/HeroSection';
 import { IntroSection } from './components/IntroSection';
 import { MeetCoupleSection } from './components/MeetCoupleSection';
+import { ParallaxSection } from './components/ParallaxSection';
 import { EventsSection } from './components/EventsSection';
 import { VenueSection } from './components/VenueSection';
 import { RsvpSection } from './components/RsvpSection';
@@ -39,6 +40,7 @@ export const App: React.FC = () => {
       <HeroSection />
       <IntroSection />
       <MeetCoupleSection />
+      <ParallaxSection />
       <EventsSection />
       <VenueSection />
       <RsvpSection />
