@@ -19,20 +19,11 @@ export const VenueSection: React.FC = () => {
 
   return (
     <section id="venue" className="relative overflow-hidden bg-[#A83B00] px-5 py-24 text-[#FFFDF5] sm:py-36">
-      <div className="pointer-events-none absolute -right-20 -top-20 w-80 select-none">
-        <img
-          src={assets.mandalaMaroon}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="animate-spin-soft h-full w-full object-contain opacity-15"
-          style={{ transformOrigin: 'center center' }}
-        />
-      </div>
-
       <div className="relative mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <RevealOnScroll>
-          <p className="eyebrow text-[#F3E3C0]">The way to the wedding</p>
+          <p className="font-title text-xs uppercase tracking-[0.32em] text-[#FFFDF5] font-semibold">
+            The way to the wedding
+          </p>
           <h2 className="mt-4 font-display text-5xl leading-none sm:text-6xl text-[#FFFDF5]">Join us in {cityName}</h2>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-[#FFFDF5]/90">
             {weddingConfig.venue.description || `Follow the golden path to ${weddingData.venue}, where our families will be waiting to welcome you.`}

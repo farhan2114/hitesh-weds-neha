@@ -757,8 +757,10 @@ export const EventsSection: React.FC = () => {
                 key={i}
                 type="button"
                 onClick={() => setActiveIndex(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === i ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-[#D4AF37]/35 hover:bg-[#D4AF37]/70'
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === i
+                    ? 'w-8 bg-[#801B05] shadow-md ring-1 ring-[#FAC12C]'
+                    : 'w-2.5 bg-[#801B05]/40 hover:bg-[#801B05]/80 border border-[#801B05]/60'
                 }`}
                 aria-label={`Go to slide ${i + 1}`}
               />

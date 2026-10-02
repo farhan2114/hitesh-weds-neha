@@ -187,10 +187,8 @@ export const RsvpSection: React.FC = () => {
     : [];
 
   return (
-    <section id="rsvp" className="relative overflow-hidden bg-gradient-to-b from-[#FDE8D4] via-[#FDF3E8] to-[#FDE8D4] px-5 py-16 sm:py-24">
+    <section id="rsvp" className="relative overflow-hidden px-5 py-16 sm:py-24">
       <SpinningMandala className="-left-20 top-1/2 w-48 sm:w-64" />
-      <Ornament variant="gold" className="-right-8 top-14 w-36 rotate-6 sm:w-48" />
-      <Ornament variant="leaf" className="-left-10 bottom-10 w-36 -rotate-6 sm:w-52" />
 
       <div className="relative mx-auto max-w-4xl">
         <RevealOnScroll className="text-center">
