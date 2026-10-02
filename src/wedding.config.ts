@@ -21,7 +21,7 @@ export const weddingConfig = {
     groomPhotoAlt: 'Hitesh, the groom',
 
     brideRole: 'The Bride',
-    brideParentsNote: 'D/o: Ramachander Srinivas & Madhuri Diwan',
+    brideParentsNote: 'D/o Diwan Sreenivas & Madhuri',
     brideDescription:
       'A soul of graceful warmth and radiant joy, her laughter lights up every room she enters. With a generous heart and spirited smile, she steps into this new chapter with boundless love, poise, and devotion to family.',
     bridePhoto: '/client-images/bride.jpg',
