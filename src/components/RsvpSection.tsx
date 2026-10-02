@@ -187,7 +187,7 @@ export const RsvpSection: React.FC = () => {
     : [];
 
   return (
-    <section id="rsvp" className="relative overflow-hidden px-5 py-16 sm:py-24">
+    <section id="rsvp" className="relative overflow-hidden bg-gradient-to-b from-[#FDE8D4] via-[#FDF3E8] to-[#FDE8D4] px-5 py-16 sm:py-24">
       <SpinningMandala className="-left-20 top-1/2 w-48 sm:w-64" />
       <Ornament variant="gold" className="-right-8 top-14 w-36 rotate-6 sm:w-48" />
       <Ornament variant="leaf" className="-left-10 bottom-10 w-36 -rotate-6 sm:w-52" />
@@ -303,8 +303,8 @@ export const RsvpSection: React.FC = () => {
                 {/* Name & Mail ID Fields */}
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label className="block text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground mb-1 font-title flex items-center gap-1.5">
-                      <User className="h-3.5 w-3.5 text-gold" />
+                    <label className="block text-[0.68rem] uppercase tracking-[0.2em] text-[#F3E3C0] mb-1 font-title flex items-center gap-1.5 font-semibold">
+                      <User className="h-3.5 w-3.5 text-[#FAC12C]" />
                       Full Name *
                     </label>
                     <input
@@ -316,8 +316,8 @@ export const RsvpSection: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground mb-1 font-title flex items-center gap-1.5">
-                      <Mail className="h-3.5 w-3.5 text-gold" />
+                    <label className="block text-[0.68rem] uppercase tracking-[0.2em] text-[#F3E3C0] mb-1 font-title flex items-center gap-1.5 font-semibold">
+                      <Mail className="h-3.5 w-3.5 text-[#FAC12C]" />
                       Mail ID *
                     </label>
                     <input
@@ -332,34 +332,34 @@ export const RsvpSection: React.FC = () => {
                 </div>
 
                 {/* Number of Guests: Adults & Kids */}
-                <div className="mt-8 rounded-2xl border border-gold/30 bg-gold/5 p-4 sm:p-5">
-                  <label className="block text-[0.68rem] uppercase tracking-[0.22em] text-gold-deep font-title mb-4 flex items-center gap-1.5 font-bold">
-                    <Users className="h-3.5 w-3.5 text-gold-deep" />
+                <div className="mt-8 rounded-2xl border border-[#F3E3C0]/40 bg-black/20 p-4 sm:p-5">
+                  <label className="block text-[0.68rem] uppercase tracking-[0.22em] text-[#F3E3C0] font-title mb-4 flex items-center gap-1.5 font-bold">
+                    <Users className="h-3.5 w-3.5 text-[#FAC12C]" />
                     Number of Guests Attending
                   </label>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     {/* Adults Counter */}
-                    <div className="flex items-center justify-between rounded-xl border border-gold/30 bg-card/60 px-4 py-2.5">
+                    <div className="flex items-center justify-between rounded-xl border border-[#F3E3C0]/35 bg-black/25 px-4 py-2.5">
                       <div>
-                        <p className="font-serif text-sm font-semibold text-foreground">Adults</p>
-                        <p className="text-[11px] text-muted-foreground">Age 12 and above</p>
+                        <p className="font-serif text-sm font-semibold text-[#FFFDF5]">Adults</p>
+                        <p className="text-[11px] text-[#F3E3C0]/80">Age 12 and above</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
                           onClick={() => setAdultsCount((a) => Math.max(1, a - 1))}
-                          className="h-8 w-8 rounded-full border border-gold/50 flex items-center justify-center font-bold text-gold hover:bg-gold/15 active:scale-90 transition-all cursor-pointer"
+                          className="h-8 w-8 rounded-full border border-[#F3E3C0] flex items-center justify-center font-bold text-[#F3E3C0] hover:bg-[#F3E3C0]/20 active:scale-90 transition-all cursor-pointer"
                         >
                           −
                         </button>
-                        <span className="font-title text-xl w-6 text-center text-foreground font-semibold">
+                        <span className="font-title text-xl w-6 text-center text-[#FFFDF5] font-semibold">
                           {adultsCount}
                         </span>
                         <button
                           type="button"
                           onClick={() => setAdultsCount((a) => Math.min(20, a + 1))}
-                          className="h-8 w-8 rounded-full border border-gold/50 flex items-center justify-center font-bold text-gold hover:bg-gold/15 active:scale-90 transition-all cursor-pointer"
+                          className="h-8 w-8 rounded-full border border-[#F3E3C0] flex items-center justify-center font-bold text-[#F3E3C0] hover:bg-[#F3E3C0]/20 active:scale-90 transition-all cursor-pointer"
                         >
                           +
                         </button>
@@ -367,26 +367,26 @@ export const RsvpSection: React.FC = () => {
                     </div>
 
                     {/* Kids Counter */}
-                    <div className="flex items-center justify-between rounded-xl border border-gold/30 bg-card/60 px-4 py-2.5">
+                    <div className="flex items-center justify-between rounded-xl border border-[#F3E3C0]/35 bg-black/25 px-4 py-2.5">
                       <div>
-                        <p className="font-serif text-sm font-semibold text-foreground">Kids</p>
-                        <p className="text-[11px] text-muted-foreground">Children under 12</p>
+                        <p className="font-serif text-sm font-semibold text-[#FFFDF5]">Kids</p>
+                        <p className="text-[11px] text-[#F3E3C0]/80">Children under 12</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
                           type="button"
                           onClick={() => setKidsCount((k) => Math.max(0, k - 1))}
-                          className="h-8 w-8 rounded-full border border-gold/50 flex items-center justify-center font-bold text-gold hover:bg-gold/15 active:scale-90 transition-all cursor-pointer"
+                          className="h-8 w-8 rounded-full border border-[#F3E3C0] flex items-center justify-center font-bold text-[#F3E3C0] hover:bg-[#F3E3C0]/20 active:scale-90 transition-all cursor-pointer"
                         >
                           −
                         </button>
-                        <span className="font-title text-xl w-6 text-center text-foreground font-semibold">
+                        <span className="font-title text-xl w-6 text-center text-[#FFFDF5] font-semibold">
                           {kidsCount}
                         </span>
                         <button
                           type="button"
                           onClick={() => setKidsCount((k) => Math.min(15, k + 1))}
-                          className="h-8 w-8 rounded-full border border-gold/50 flex items-center justify-center font-bold text-gold hover:bg-gold/15 active:scale-90 transition-all cursor-pointer"
+                          className="h-8 w-8 rounded-full border border-[#F3E3C0] flex items-center justify-center font-bold text-[#F3E3C0] hover:bg-[#F3E3C0]/20 active:scale-90 transition-all cursor-pointer"
                         >
                           +
                         </button>
@@ -394,14 +394,14 @@ export const RsvpSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <p className="mt-3 text-center text-xs font-serif text-muted-foreground">
-                    Total Attending: <span className="text-gold font-bold font-title">{adultsCount + kidsCount} Guests</span>
+                  <p className="mt-3 text-center text-xs font-serif text-[#F3E3C0]">
+                    Total Attending: <span className="text-[#FFFDF5] font-bold font-title">{adultsCount + kidsCount} Guests</span>
                   </p>
                 </div>
 
                 {/* Events Category Selection */}
                 <div className="mt-8">
-                  <p className="text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground mb-4 font-title">
+                  <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#F3E3C0] mb-4 font-title font-semibold">
                     Which celebrations will you be joining? *
                   </p>
                   <div className="space-y-3.5">
@@ -414,26 +414,26 @@ export const RsvpSection: React.FC = () => {
                           key={ev.name}
                           className={`rounded-xl border transition-all duration-300 p-4 ${
                             isAttending
-                              ? 'border-gold bg-gold/10 shadow-[0_4px_16px_rgba(212,175,55,0.15)] ring-1 ring-gold/40'
+                              ? 'border-2 border-[#FAC12C] bg-[#FAC12C]/15 shadow-[0_4px_16px_rgba(250,193,44,0.25)] ring-1 ring-[#FAC12C]/40'
                               : isDeclined
-                              ? 'border-maroon/40 bg-maroon/5 opacity-80'
-                              : 'border-gold/25 hover:border-gold/45 bg-card/40'
+                              ? 'border-[#F3E3C0]/30 bg-black/30 opacity-75'
+                              : 'border border-[#F3E3C0]/40 hover:border-[#F3E3C0] bg-black/20'
                           }`}
                         >
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                             <div className="min-w-0">
-                              <p className="font-title text-sm sm:text-base font-semibold text-foreground flex items-center gap-2">
+                              <p className="font-title text-sm sm:text-base font-semibold text-[#FFFDF5] flex items-center gap-2">
                                 {ev.name}
                                 {isAttending && (
-                                  <span className="text-[10px] uppercase font-bold text-gold tracking-widest bg-gold/20 px-2 py-0.5 rounded-full">
+                                  <span className="text-[10px] uppercase font-bold text-[#2B1207] tracking-widest bg-[#FAC12C] px-2 py-0.5 rounded-full">
                                     Attending
                                   </span>
                                 )}
                               </p>
-                              <p className="mt-0.5 text-xs text-muted-foreground">
+                              <p className="mt-0.5 text-xs text-[#F3E3C0]">
                                 {ev.day} · {ev.time}
                               </p>
-                              <p className="text-[11px] text-muted-foreground/80 mt-0.5">
+                              <p className="text-[11px] text-[#F3E3C0]/80 mt-0.5">
                                 📍 {ev.place}
                               </p>
                             </div>
@@ -444,8 +444,8 @@ export const RsvpSection: React.FC = () => {
                                 onClick={() => toggleAttendance(ev.name, 'attending')}
                                 className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[0.68rem] uppercase tracking-wider font-semibold border transition-all cursor-pointer ${
                                   isAttending
-                                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#B38F26] text-[#2A0810] border-[#D4AF37] shadow-sm'
-                                    : 'border-gold/40 text-foreground/80 hover:border-gold hover:text-foreground'
+                                    ? 'bg-[#FAC12C] text-[#2B1207] border-[#FAC12C] font-bold shadow-sm'
+                                    : 'border-[#F3E3C0]/60 text-[#F3E3C0] hover:border-[#F3E3C0] hover:text-[#FFFDF5] hover:bg-[#F3E3C0]/10'
                                 }`}
                               >
                                 <Check className="h-3 w-3" />
@@ -456,8 +456,8 @@ export const RsvpSection: React.FC = () => {
                                 onClick={() => toggleAttendance(ev.name, 'declining')}
                                 className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[0.68rem] uppercase tracking-wider font-semibold border transition-all cursor-pointer ${
                                   isDeclined
-                                    ? 'bg-maroon/15 border-maroon text-maroon'
-                                    : 'border-gold/25 text-muted-foreground hover:border-maroon/40 hover:text-maroon'
+                                    ? 'bg-black/40 border-[#F3E3C0]/60 text-[#F3E3C0]'
+                                    : 'border-[#F3E3C0]/40 text-[#F3E3C0]/80 hover:border-[#F3E3C0] hover:text-[#FFFDF5]'
                                 }`}
                               >
                                 <X className="h-3 w-3" />
@@ -499,7 +499,7 @@ export const RsvpSection: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mt-8 w-full rounded-full border border-[#FAC12C] bg-[#FAC12C] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#2B1207] font-bold shadow-lg transition-all hover:bg-[#FFFDF5] hover:scale-[1.01] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  className="mt-8 w-full rounded-full border-2 border-[#F3E3C0] bg-[#FAC12C] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#2B1207] font-bold shadow-xl transition-all hover:bg-[#FFFDF5] hover:scale-[1.01] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isSubmitting
                     ? (isEditing ? 'Updating RSVP...' : 'Submitting RSVP...')

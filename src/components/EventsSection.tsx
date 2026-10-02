@@ -781,7 +781,7 @@ export const EventsSection: React.FC = () => {
             style={{
               willChange: 'transform, opacity',
             }}
-            className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-[28px] border-2 border-[#D4AF37] bg-card text-card-foreground shadow-[0_25px_70px_rgba(0,0,0,0.6),0_0_40px_rgba(212,175,55,0.3)] animate-card-swipe-in"
+            className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-[28px] border-2 border-[#F3E3C0] bg-[#801B05] text-[#FFFDF5] shadow-[0_25px_70px_rgba(0,0,0,0.85),0_0_35px_rgba(243,227,192,0.3)] animate-card-swipe-in"
           >
             {/* Modal Header Banner Image */}
             <div className="relative h-48 sm:h-56 w-full overflow-hidden">
@@ -803,14 +803,14 @@ export const EventsSection: React.FC = () => {
               </button>
 
               {/* Title & Tagline in Banner */}
-              <div className="absolute bottom-4 left-5 right-5 text-paper">
-                <span className="rounded-full bg-gold/90 px-3 py-0.5 font-serif text-[10px] uppercase tracking-[0.25em] text-[#2A0810] font-semibold">
+              <div className="absolute bottom-4 left-5 right-5 text-white">
+                <span className="rounded-full bg-[#FAC12C] px-3.5 py-1 font-serif text-[10px] uppercase tracking-[0.25em] text-[#2B1207] font-bold shadow-md">
                   Celebration Details
                 </span>
-                <h3 className="mt-2 font-traditional italic text-2xl min-[400px]:text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-md break-words">
+                <h3 className="mt-2.5 font-traditional italic text-2xl min-[400px]:text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-md break-words">
                   {activeModalEvent.name}
                 </h3>
-                <p className="mt-1 font-title text-xs sm:text-sm text-paper/85">
+                <p className="mt-1 font-title text-xs sm:text-sm text-[#F3E3C0]">
                   {activeModalEvent.tagline}
                 </p>
               </div>
@@ -820,40 +820,40 @@ export const EventsSection: React.FC = () => {
             <div className="p-6 sm:p-7 space-y-5">
               {/* Date & Time Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="flex items-center gap-3 rounded-xl border border-gold/30 bg-muted/50 p-3.5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-deep">
+                <div className="flex items-center gap-3 rounded-xl border border-[#F3E3C0]/40 bg-black/35 p-3.5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FAC12C]/20 text-[#FAC12C]">
                     <Calendar className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Date</p>
-                    <p className="font-title text-sm font-semibold text-foreground">{activeModalEvent.day}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-[#F3E3C0] font-semibold">Date</p>
+                    <p className="font-title text-sm font-semibold text-white">{activeModalEvent.day}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 rounded-xl border border-gold/30 bg-muted/50 p-3.5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-deep">
+                <div className="flex items-center gap-3 rounded-xl border border-[#F3E3C0]/40 bg-black/35 p-3.5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FAC12C]/20 text-[#FAC12C]">
                     <Clock className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Time</p>
-                    <p className="font-title text-sm font-semibold text-foreground">{activeModalEvent.time}</p>
+                    <p className="text-[10px] uppercase tracking-wider text-[#F3E3C0] font-semibold">Time</p>
+                    <p className="font-title text-sm font-semibold text-white">{activeModalEvent.time}</p>
                   </div>
                 </div>
               </div>
 
               {/* Venue & Location */}
-              <div className="rounded-2xl border border-gold/30 bg-muted/40 p-4">
+              <div className="rounded-2xl border border-[#F3E3C0]/40 bg-black/35 p-4">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-deep mt-0.5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FAC12C]/20 text-[#FAC12C] mt-0.5">
                     <MapPin className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Venue &amp; Location</p>
-                    <p className="font-display text-lg font-semibold text-foreground mt-0.5">
+                    <p className="text-[10px] uppercase tracking-wider text-[#F3E3C0] font-semibold">Venue &amp; Location</p>
+                    <p className="font-display text-lg font-semibold text-white mt-0.5">
                       {activeModalEvent.place}
                     </p>
                     {activeModalEvent.address && (
-                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                      <p className="text-xs text-[#F3E3C0] mt-1 leading-relaxed">
                         {activeModalEvent.address}
                       </p>
                     )}
@@ -862,20 +862,20 @@ export const EventsSection: React.FC = () => {
               </div>
 
               {/* Fun Lines / Celebration Note */}
-              <div className="rounded-2xl border border-gold/25 bg-amber-50/40 p-4 text-center">
-                <p className="text-xs italic leading-relaxed text-foreground/90 font-serif">
+              <div className="rounded-2xl border border-[#F3E3C0]/35 bg-white/10 p-4 text-center">
+                <p className="text-xs italic leading-relaxed text-white font-serif">
                   &ldquo;{activeModalEvent.funLines}&rdquo;
                 </p>
               </div>
 
               {/* Preferred Dress Code */}
-              <div className="flex items-center gap-3 rounded-2xl border border-gold/30 bg-muted/40 p-4">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold/20 text-gold-deep">
+              <div className="flex items-center gap-3 rounded-2xl border border-[#F3E3C0]/40 bg-black/35 p-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#FAC12C]/20 text-[#FAC12C]">
                   <Shirt className="h-4 w-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">Preferred Dress Code</p>
-                  <p className="font-title text-xs sm:text-sm font-medium text-foreground mt-0.5">
+                  <p className="text-[10px] uppercase tracking-wider text-[#F3E3C0] font-semibold">Preferred Dress Code</p>
+                  <p className="font-title text-xs sm:text-sm font-medium text-white mt-0.5">
                     {activeModalEvent.dressCode}
                   </p>
                 </div>
@@ -886,7 +886,7 @@ export const EventsSection: React.FC = () => {
                 href={activeModalEvent.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#A83B00] via-[#C43907] to-[#A83B00] py-3.5 px-6 font-serif text-xs uppercase tracking-[0.25em] text-[#FFFDF5] shadow-lg border border-[#F3E3C0]/40 transition-all duration-300 hover:from-[#C43907] hover:to-[#CB4501] hover:shadow-xl active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#FAC12C] py-3.5 px-6 font-serif text-xs uppercase tracking-[0.25em] text-[#2B1207] font-bold shadow-xl border-2 border-white transition-all duration-300 hover:bg-white hover:text-[#2B1207] hover:scale-[1.01] active:scale-[0.98]"
               >
                 <Navigation className="h-4 w-4" />
                 Get Directions on Google Maps

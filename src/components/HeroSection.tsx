@@ -335,7 +335,7 @@ export const HeroSection: React.FC = () => {
             type="button"
             onClick={handleVideoEnd}
             aria-label="Skip intro"
-            className={`absolute bottom-6 right-5 z-20 rounded-full border border-gold/50 bg-black/60 px-5 py-2.5 font-title text-[0.68rem] uppercase tracking-[0.25em] text-paper backdrop-blur-md transition-all duration-500 hover:bg-black/80 cursor-pointer sm:bottom-10 sm:right-10 ${
+            className={`absolute bottom-6 right-5 z-20 rounded-full border-2 border-[#FAC12C] bg-white/95 px-6 py-2.5 font-title text-[0.72rem] uppercase tracking-[0.25em] text-[#2B1207] font-bold shadow-2xl backdrop-blur-md transition-all duration-300 hover:bg-white hover:scale-105 active:scale-95 cursor-pointer sm:bottom-10 sm:right-10 ${
               started ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
           >

@@ -8,9 +8,9 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="border-t border-[#FAC12C]/40 bg-[#801B05] px-5 py-16 text-center text-[#FFFDF5]">
-      <p className="flex flex-wrap items-center justify-center gap-x-2 font-display text-2xl min-[360px]:text-3xl sm:text-4xl text-gold-foil animate-foil break-words">
+      <p className="flex flex-wrap items-center justify-center gap-x-2.5 font-display text-2xl min-[360px]:text-3xl sm:text-4xl text-[#FFFDF5] font-semibold break-words">
         <span>{weddingData.groom}</span>
-        <span className="font-title text-base sm:text-2xl text-[#F3E3C0]">&amp;</span>
+        <span className="font-title text-base sm:text-2xl text-[#FAC12C]">&amp;</span>
         <span>{weddingData.bride}</span>
       </p>
 
