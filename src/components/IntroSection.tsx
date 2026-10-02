@@ -25,9 +25,6 @@ export const IntroSection: React.FC = () => {
         </div>
 
         <div className="rule-gold mx-auto mt-8 w-40" />
-        <p className="mt-5 font-title tracking-[0.25em] uppercase text-sm text-gold-deep">
-          {weddingData.hashtag}
-        </p>
       </RevealOnScroll>
     </section>
   );

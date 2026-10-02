@@ -195,7 +195,7 @@ export const HeroSection: React.FC = () => {
               aria-hidden="true"
               width="1024"
               height="1024"
-              className="pointer-events-none absolute -top-12 left-1/2 w-24 -translate-x-1/2 opacity-55 sm:-top-16 sm:w-28"
+              className="pointer-events-none absolute -top-12 left-1/2 w-24 -translate-x-1/2 opacity-90 drop-shadow-[0_4px_12px_rgba(59,31,20,0.5)] sm:-top-16 sm:w-28"
             />
             <p className="invite-line eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs text-[#F3E3C0]">{weddingData.dateShort}</p>
             <div className="invite-line mx-auto mt-4 sm:mt-5 max-w-md text-center">

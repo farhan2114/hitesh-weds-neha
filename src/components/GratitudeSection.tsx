@@ -69,9 +69,6 @@ export const GratitudeSection: React.FC = () => {
             <p className="mt-8 font-telugu text-2xl sm:text-3xl md:text-4xl text-[#F3E3C0] font-normal leading-relaxed drop-shadow-sm">
               {weddingData.familyLine || 'మీ ఆశీస్సులే మా నూతన జీవితానికి తొలి అడుగు'}
             </p>
-            <p className="mt-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              {weddingData.hashtag}
-            </p>
           </div>
         </div>
       </RevealOnScroll>
