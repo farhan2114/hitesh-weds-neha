@@ -15,11 +15,11 @@ export const IntroSection: React.FC = () => {
           {weddingConfig.invitation.sanskritMantra || 'ఓం శ్రీ గణేశాయ నమః'}
         </p>
         
-        <div className="mx-auto mt-6 max-w-2xl text-center space-y-3">
+        <div className="mx-auto mt-6 max-w-2xl text-center space-y-4 overflow-visible">
           <p className="font-telugu text-2xl sm:text-3xl md:text-4xl text-foreground/90 leading-relaxed font-normal">
             {weddingConfig.invitation.invitationLine || 'నూతన జీవితానికి నాంది పలుకుతూ...'}
           </p>
-          <h2 className="font-telugu text-4xl sm:text-6xl md:text-7xl text-gold-foil animate-foil pt-1 font-normal">
+          <h2 className="font-telugu text-4xl sm:text-6xl md:text-7xl text-gold-deep leading-normal sm:leading-relaxed pt-3 pb-2 font-normal drop-shadow-sm overflow-visible">
             హితేష్ &amp; నేహా
           </h2>
         </div>
