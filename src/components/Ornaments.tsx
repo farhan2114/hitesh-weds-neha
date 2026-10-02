@@ -40,14 +40,14 @@ export const SpinningMandala: React.FC<MandalaProps> = ({
   reverse = false,
 }) => {
   return (
-    <div className={`pointer-events-none absolute select-none hidden md:block ${className}`}>
+    <div className={`pointer-events-none absolute select-none ${className}`}>
       <div className="h-full w-full">
         <img
           src={assets.mandalaSolidGold}
           alt=""
           aria-hidden="true"
           loading="lazy"
-          className={`h-full w-full object-contain opacity-95 sm:opacity-100 drop-shadow-[0_2px_12px_rgba(255,255,255,0.85)] drop-shadow-[0_6px_20px_rgba(168,59,0,0.35)] ${
+          className={`h-full w-full object-contain opacity-40 sm:opacity-90 md:opacity-100 drop-shadow-[0_2px_12px_rgba(255,255,255,0.85)] drop-shadow-[0_6px_20px_rgba(168,59,0,0.35)] ${
             reverse ? 'animate-spin-soft-reverse' : 'animate-spin-soft'
           }`}
           style={{ transformOrigin: 'center center' }}

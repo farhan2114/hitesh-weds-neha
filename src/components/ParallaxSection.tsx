@@ -37,7 +37,7 @@ export const ParallaxSection: React.FC = () => {
   const { banner } = weddingConfig;
 
   return (
-    <div ref={containerRef} className="relative h-[62vh] min-h-[440px] overflow-hidden bg-[#A83B00] sm:h-[75vh]">
+    <div ref={containerRef} className="relative h-[60vh] min-h-[420px] overflow-hidden bg-[#180903] sm:h-[72vh]">
       <img
         src={banner.image || assets.hands}
         alt={banner.alt || 'Wedding ceremony quote banner'}
@@ -46,11 +46,14 @@ export const ParallaxSection: React.FC = () => {
         height={1500}
         className="parallax-img absolute -top-[15%] left-0 h-[130%] w-full object-cover object-center will-change-transform"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#A83B00] via-[#A83B00]/40 to-transparent sm:bg-[#A83B00]/30" />
-      <div className="absolute inset-0 flex items-center justify-center px-6">
-        <p className="max-w-2xl text-center font-display text-2xl leading-relaxed text-[#FFFDF5] sm:text-5xl drop-shadow-[0_2px_4px_rgba(59,31,20,0.7)]">
-          {banner.quote}
-        </p>
+      {/* Natural cinematic overlay allowing photo colors to shine */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/60" />
+      <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-8">
+        <div className="max-w-3xl rounded-sm border border-[#F3E3C0]/35 bg-black/45 px-6 py-8 sm:px-12 sm:py-10 backdrop-blur-xs text-center shadow-2xl">
+          <p className="font-display text-xl sm:text-3xl md:text-4xl leading-relaxed text-[#FFFDF5] tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            "{banner.quote}"
+          </p>
+        </div>
       </div>
     </div>
   );
