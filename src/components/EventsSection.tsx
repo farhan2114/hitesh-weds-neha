@@ -589,8 +589,8 @@ export const EventsSection: React.FC = () => {
               onClick={() => setActiveIndex(idx)}
               className={`relative px-4 py-1.5 sm:px-6 sm:py-2 rounded-full font-serif text-xs sm:text-sm tracking-wider uppercase font-semibold transition-all duration-300 ${
                 activeIndex === idx
-                  ? 'bg-[#A83B00] text-[#FFFDF5] shadow-[0_4px_16px_rgba(59,31,20,0.5)] border border-[#F3E3C0] scale-105 ring-1 ring-[#F3E3C0]/60'
-                  : 'bg-[#CB4501] text-[#F3E3C0] hover:text-[#FFFDF5] border border-[#F3E3C0]/40 hover:border-[#F3E3C0]'
+                  ? 'bg-[#A83B00] text-[#FFFDF5] shadow-[0_4px_16px_rgba(43,18,7,0.5)] border-2 border-[#FAC12C] scale-105 ring-1 ring-[#FAC12C]/60'
+                  : 'bg-[#CB4501] text-[#FFFDF5] hover:bg-[#A83B00] border border-[#FAC12C]/50 hover:border-[#FAC12C]'
               }`}
             >
               {ev.name}
@@ -618,7 +618,7 @@ export const EventsSection: React.FC = () => {
             type="button"
             onClick={prevEvent}
             aria-label="Previous celebration"
-            className="absolute left-1 sm:left-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#F3E3C0] text-[#3B1F14] shadow-[0_4px_16px_rgba(59,31,20,0.3)] border border-[#F3E3C0] backdrop-blur-md transition-all duration-300 hover:bg-[#FFFDF5] hover:text-[#3B1F14] hover:scale-110 active:scale-95"
+            className="absolute left-1 sm:left-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#FAC12C] text-[#2B1207] shadow-[0_4px_16px_rgba(43,18,7,0.35)] border border-[#FFFDF5] backdrop-blur-md transition-all duration-300 hover:bg-[#FFFDF5] hover:text-[#2B1207] hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="h-5 w-5 sm:h-7 sm:w-7" />
           </button>
@@ -628,7 +628,7 @@ export const EventsSection: React.FC = () => {
             type="button"
             onClick={nextEvent}
             aria-label="Next celebration"
-            className="absolute right-1 sm:right-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#F3E3C0] text-[#3B1F14] shadow-[0_4px_16px_rgba(59,31,20,0.3)] border border-[#F3E3C0] backdrop-blur-md transition-all duration-300 hover:bg-[#FFFDF5] hover:text-[#3B1F14] hover:scale-110 active:scale-95"
+            className="absolute right-1 sm:right-2 z-40 flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#FAC12C] text-[#2B1207] shadow-[0_4px_16px_rgba(43,18,7,0.35)] border border-[#FFFDF5] backdrop-blur-md transition-all duration-300 hover:bg-[#FFFDF5] hover:text-[#2B1207] hover:scale-110 active:scale-95"
           >
             <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7" />
           </button>

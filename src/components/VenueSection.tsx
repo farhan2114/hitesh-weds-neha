@@ -45,7 +45,7 @@ export const VenueSection: React.FC = () => {
             href={mapsSearchUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-9 inline-flex items-center gap-3 border border-[#F3E3C0] px-6 py-3 text-xs uppercase tracking-[0.24em] text-[#F3E3C0] transition-colors hover:bg-[#F3E3C0]/15"
+            className="mt-9 inline-flex items-center gap-3 border border-[#FAC12C] bg-[#FAC12C] px-6 py-3 text-xs uppercase tracking-[0.24em] text-[#2B1207] font-semibold transition-all hover:bg-[#FFFDF5] hover:text-[#2B1207] shadow-lg active:scale-95"
           >
             <MapPin className="size-4" aria-hidden="true" />
             Open in maps

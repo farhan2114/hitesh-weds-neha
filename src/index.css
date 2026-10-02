@@ -20,50 +20,52 @@
 
 :root {
   --radius: 0.25rem;
-  /* Soft, light warm festive sandstone / ivory background */
-  --background: #FDF6ED;
-  /* Deep orange */
+  /* Festive Apricot Sandstone matching the reference courtyard */
+  --background: #F8B67A;
   --bg-deep: #C43907;
-  /* Dark burnt orange */
   --bg-dark-burnt: #A83B00;
-  /* Pattern/background accent */
   --bg-accent: #BD5009;
 
-  /* Dark text on light backgrounds (13.8:1 on #FDF6ED - WCAG 2.2 AAA) */
-  --foreground: #3B1F14;
-  --main-text: #3B1F14;
-  --secondary-text: #6A351E;
-  --dark-text: #3B1F14;
+  /* Rich traditional accent colors from reference image */
+  --festive-marigold: #FAC12C;
+  --festive-pink: #D94680;
+  --festive-green: #3F6212;
+
+  /* Dark text on warm apricot background (9.8:1 - WCAG 2.2 AAA) */
+  --foreground: #2B1207;
+  --main-text: #2B1207;
+  --secondary-text: #5C2812;
+  --dark-text: #2B1207;
 
   /* Card Colors (The arched Haldi cards) */
   --paper: #A83B00;
   --ink: #FFFDF5;
   --card: #A83B00;
   --card-foreground: #FFFDF5;
-  --popover: #FDF6ED;
-  --popover-foreground: #3B1F14;
+  --popover: #F8B67A;
+  --popover-foreground: #2B1207;
   --primary: #C43907;
   --primary-foreground: #FFFDF5;
 
-  /* Accent & Gold */
-  --gold: #A83B00;
-  --gold-deep: #A83B00;
-  --secondary: #F3E3C0;
-  --secondary-foreground: #3B1F14;
-  --muted: #F5E5D3;
-  --muted-foreground: #6A351E;
+  /* Accent & Auspicious Colors */
+  --gold: #801B05;
+  --gold-deep: #801B05;
+  --secondary: #FAC12C;
+  --secondary-foreground: #2B1207;
+  --muted: #F3AA66;
+  --muted-foreground: #5C2812;
   --accent: #C43907;
   --accent-foreground: #FFFDF5;
-  --maroon: #A83B00;
-  --palm: #3A6926;
+  --maroon: #801B05;
+  --palm: #3F6212;
   --destructive: #C5221F;
   --destructive-foreground: #FFFDF5;
-  --border: rgba(168, 59, 0, 0.25);
+  --border: rgba(128, 27, 5, 0.35);
   --input: #A83B00;
   --ring: #C43907;
-  --gradient-gold: linear-gradient(100deg, #A83B00, #C43907, #D96016, #A83B00);
-  --gradient-veil: linear-gradient(180deg, rgba(253, 246, 237, 0) 0%, #FDF6ED 100%);
-  --shadow-card: 0 24px 60px -20px rgba(59, 31, 20, 0.4);
+  --gradient-gold: linear-gradient(100deg, #801B05, #C43907, #D96016, #801B05);
+  --gradient-veil: linear-gradient(180deg, rgba(248, 182, 122, 0) 0%, #F8B67A 100%);
+  --shadow-card: 0 24px 60px -20px rgba(43, 18, 7, 0.45);
 }
 
 @layer base {
@@ -72,6 +74,10 @@
   }
   body {
     background-color: var(--background);
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(254, 215, 170, 0.5) 0%, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(251, 146, 60, 0.35) 0%, transparent 45%),
+      linear-gradient(180deg, #F8B67A 0%, #F5A258 50%, #F8B67A 100%);
     color: var(--foreground);
     font-family: 'Karla', ui-sans-serif, system-ui, sans-serif;
     overflow-x: hidden;
@@ -81,10 +87,10 @@
 .paper-card {
   background-color: #A83B00;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(196, 57, 7, 0.7) 0%, transparent 65%),
-    radial-gradient(circle at 50% 100%, rgba(189, 80, 9, 0.4) 0%, transparent 75%);
+    radial-gradient(circle at 50% 0%, rgba(196, 57, 7, 0.8) 0%, transparent 65%),
+    radial-gradient(circle at 50% 100%, rgba(189, 80, 9, 0.5) 0%, transparent 75%);
   color: #FFFDF5;
-  box-shadow: 0 24px 60px -20px rgba(59, 31, 20, 0.5);
+  box-shadow: 0 24px 60px -20px rgba(43, 18, 7, 0.55);
   border: 2px solid #F3E3C0;
 }
 
@@ -136,7 +142,7 @@
 }
 
 .rule-gold {
-  background-image: linear-gradient(90deg, transparent, #A83B00, transparent);
+  background-image: linear-gradient(90deg, transparent, #801B05, transparent);
   height: 1px;
 }
 
@@ -148,9 +154,9 @@
   font-family: 'Karla', ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: #A83B00;
+  color: #801B05;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .font-telugu {

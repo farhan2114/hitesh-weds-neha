@@ -499,7 +499,7 @@ export const RsvpSection: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mt-8 w-full rounded-full border border-[#F3E3C0] bg-[#F3E3C0] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#3B1F14] font-bold shadow-lg transition-all hover:bg-[#FFFDF5] hover:scale-[1.01] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  className="mt-8 w-full rounded-full border border-[#FAC12C] bg-[#FAC12C] py-4 font-serif text-xs uppercase tracking-[0.3em] text-[#2B1207] font-bold shadow-lg transition-all hover:bg-[#FFFDF5] hover:scale-[1.01] active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isSubmitting
                     ? (isEditing ? 'Updating RSVP...' : 'Submitting RSVP...')

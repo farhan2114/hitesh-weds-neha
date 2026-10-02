@@ -1,9 +1,10 @@
 export const assets = {
   temple: '/assets/temple.webp',
   templeDoor: '/assets/temple-door-i90JNxdU.jpg',
-  mandalaGold: '/assets/mandala-B9FmxM9k.png',
-  mandalaOrange: '/assets/mandala-orange.png',
+  mandalaGold: '/assets/mandala-solid-gold.png',
+  mandalaOrange: '/assets/mandala-solid-orange.png',
   mandalaMaroon: '/assets/maroon-mandala.png',
+  mandalaSolidGold: '/assets/mandala-solid-gold.png',
   flowerLarge: '/assets/flower-large.png',
   flowerSmall: '/assets/flower-small.png',
   goldLily: '/assets/gold-lily-DNkCXINp.png',

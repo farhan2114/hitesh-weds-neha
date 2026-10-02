@@ -190,12 +190,12 @@ export const HeroSection: React.FC = () => {
         <div className="invite-card mx-auto max-w-xl sm:max-w-2xl opacity-0">
           <div className="paper-card arch-top relative px-6 py-9 min-[400px]:px-8 min-[400px]:py-11 sm:px-14 sm:py-14 text-center shadow-2xl">
             <img
-              src={assets.mandalaGold}
+              src={assets.mandalaSolidGold}
               alt=""
               aria-hidden="true"
               width="1024"
               height="1024"
-              className="pointer-events-none absolute -top-12 left-1/2 w-24 -translate-x-1/2 opacity-90 drop-shadow-[0_4px_12px_rgba(59,31,20,0.5)] sm:-top-16 sm:w-28"
+              className="pointer-events-none absolute -top-12 left-1/2 w-24 -translate-x-1/2 opacity-95 drop-shadow-[0_4px_12px_rgba(59,31,20,0.5)] sm:-top-16 sm:w-28"
             />
             <p className="invite-line eyebrow mt-4 sm:mt-5 text-[0.66rem] sm:text-xs text-[#F3E3C0]">{weddingData.dateShort}</p>
             <div className="invite-line mx-auto mt-4 sm:mt-5 max-w-md text-center">
@@ -292,7 +292,7 @@ export const HeroSection: React.FC = () => {
               {/* Mandala: spins centered above card */}
               <div className="pointer-events-none absolute -top-11 sm:-top-14 left-1/2 -translate-x-1/2">
                 <img
-                  src={assets.mandalaGold}
+                  src={assets.mandalaSolidGold}
                   alt=""
                   aria-hidden="true"
                   className="w-20 sm:w-28 animate-[spin_16s_linear_infinite]"
@@ -317,9 +317,9 @@ export const HeroSection: React.FC = () => {
                 type="button"
                 onClick={handleStart}
                 aria-label="Tap to open the invitation"
-                className="group relative overflow-hidden rounded-full border border-[#F3E3C0] bg-[#F3E3C0] px-8 py-3.5 transition-all hover:bg-[#FFFDF5] active:scale-95 cursor-pointer shadow-xl"
+                className="group relative overflow-hidden rounded-full border border-[#FAC12C] bg-[#FAC12C] px-8 py-3.5 transition-all hover:bg-[#FFFDF5] active:scale-95 cursor-pointer shadow-xl"
               >
-                <span className="relative font-title text-[0.72rem] uppercase tracking-[0.34em] text-[#3B1F14] font-bold">
+                <span className="relative font-title text-[0.72rem] uppercase tracking-[0.34em] text-[#2B1207] font-bold">
                   Open Invitation
                 </span>
               </button>
