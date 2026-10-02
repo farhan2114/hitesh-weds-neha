@@ -54,7 +54,7 @@ export default {
         title: ['"Marcellus"', 'Georgia', 'serif'],
         sans: ['"Karla"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         telugu: ['"NTR"', '"LakkiReddy"', '"BapuBold"', '"Suranna"', '"Peddana"', '"Gautami"', '"Nirmala UI"', 'serif'],
-        script: ['"Great Vibes"', 'cursive'],
+        script: ['"Imperial Script"', '"Great Vibes"', 'cursive'],
       },
       borderRadius: {
         lg: 'var(--radius)',
