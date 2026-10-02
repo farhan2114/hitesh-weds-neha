@@ -24,7 +24,7 @@ export const Ornament: React.FC<OrnamentProps> = ({ className = '', variant = 'l
       alt=""
       aria-hidden="true"
       loading="lazy"
-      className={`pointer-events-none absolute select-none opacity-85 sm:opacity-95 drop-shadow-[0_2px_8px_rgba(43,18,7,0.2)] ${className}`}
+      className={`pointer-events-none absolute select-none opacity-85 sm:opacity-95 drop-shadow-[0_2px_8px_rgba(43,18,7,0.2)] hidden md:block ${className}`}
     />
   );
 };
@@ -40,7 +40,7 @@ export const SpinningMandala: React.FC<MandalaProps> = ({
   reverse = false,
 }) => {
   return (
-    <div className={`pointer-events-none absolute select-none ${className}`}>
+    <div className={`pointer-events-none absolute select-none hidden md:block ${className}`}>
       <div className="h-full w-full">
         <img
           src={assets.mandalaSolidGold}
