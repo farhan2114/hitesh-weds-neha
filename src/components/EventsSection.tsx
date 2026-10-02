@@ -561,8 +561,8 @@ export const EventsSection: React.FC = () => {
 
   return (
     <section id="events" className="relative overflow-hidden px-5 py-12 sm:py-16">
-      <SpinningMandala className="-left-24 bottom-6 w-52 sm:w-72" />
-      <SpinningMandala reverse className="-right-24 top-8 w-52 sm:w-72" />
+      <SpinningMandala className="-left-24 top-8 w-52 sm:w-72" />
+      <SpinningMandala reverse className="-right-24 bottom-6 w-52 sm:w-72" />
 
       <div className="relative mx-auto max-w-5xl">
         <RevealOnScroll className="text-center">

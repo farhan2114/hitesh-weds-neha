@@ -14,9 +14,6 @@ export const MeetCoupleSection: React.FC = () => {
 
       <div className="relative mx-auto max-w-4xl">
         <RevealOnScroll className="text-center">
-          <p className="font-telugu text-2xl sm:text-3xl md:text-4xl text-[#801B05] tracking-normal font-normal drop-shadow-sm mb-1.5 sm:mb-2">
-            హితేష్ - నేహా
-          </p>
           <p className="eyebrow">Together with their families</p>
           <h2 className="mt-3 font-display text-4xl sm:text-6xl text-foreground">Meet the couple</h2>
           <div className="rule-gold mx-auto mt-6 w-32" />

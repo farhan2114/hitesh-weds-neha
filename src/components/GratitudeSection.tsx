@@ -7,9 +7,9 @@ import { RevealOnScroll } from './RevealOnScroll';
 export const GratitudeSection: React.FC = () => {
   return (
     <section className="relative overflow-hidden px-5 py-24 sm:py-32">
-      <SpinningMandala reverse className="-left-24 bottom-4 w-56 sm:w-80" />
-      <Ornament variant="gold" className="-left-10 top-10 w-36 rotate-6 sm:w-52" />
-      <Ornament variant="gold" className="-right-8 bottom-10 w-32 -rotate-12 sm:w-48" />
+      <SpinningMandala reverse className="-right-24 bottom-4 w-56 sm:w-80" />
+      <Ornament variant="gold" className="-right-10 top-10 w-36 rotate-6 sm:w-52" />
+      <Ornament variant="gold" className="-left-8 bottom-10 w-32 -rotate-12 sm:w-48" />
 
       <RevealOnScroll className="relative mx-auto max-w-4xl">
         <div className="paper-card relative overflow-hidden px-6 py-14 text-center sm:px-16 sm:py-20">
@@ -56,9 +56,8 @@ export const GratitudeSection: React.FC = () => {
               loading="lazy"
               className="mx-auto mt-6 w-full max-w-sm opacity-90"
             />
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-[#FFFDF5]">
-              Your presence, prayers and affection make this beginning complete. We invite you once again to join us at{' '}
-              {weddingData.venue}, {weddingData.city} on {weddingData.dateLabel}.
+            <p className="mx-auto mt-6 max-w-xl text-sm sm:text-base leading-relaxed text-[#FFFDF5]">
+              Your presence, blessings, and affection would make this joyous beginning even more meaningful. With hearts full of happiness, we warmly invite you to join us as we celebrate this special occasion on December 18th and 19th, 2026, at the Indian Cultural Centre of South Jersey, Marlton, New Jersey.
             </p>
             <img
               src={assets.coupleNamaste}

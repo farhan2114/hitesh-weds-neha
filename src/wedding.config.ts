@@ -62,7 +62,7 @@ export const weddingConfig = {
     city: 'Marlton, New Jersey',
     cityName: 'Marlton',
     address: '820 NJ-73, Marlton, New Jersey 08053',
-    locationUnderMap: 'Marlton · New Jersey · 18 . 12 . 2026',
+    locationUnderMap: 'Marlton · New Jersey · 18th & 19th Dec 2026',
     description:
       'Follow the golden path to the Indian Cultural Centre Of South Jersey, where our families will gather to celebrate love, togetherness, and a beautiful new beginning.',
     mapsSearchUrl:
@@ -90,7 +90,7 @@ export const weddingConfig = {
       tagline: 'A splash of sun, laughter & sacred turmeric',
       day: 'Thursday, 17 Dec',
       time: '11:00 AM onwards',
-      place: 'Family Residence, Cherry Hill',
+      place: 'Airbnb, Cherry Hill',
       address: '1018 Edgemoor Road, Cherry Hill Township, NJ 08034',
       mapsUrl:
         'https://www.google.com/maps/search/?api=1&query=1018+Edgemoor+Road,+Cherry+Hill+Township,+NJ+08034',

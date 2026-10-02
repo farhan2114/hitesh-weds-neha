@@ -15,7 +15,7 @@ export const VenueSection: React.FC = () => {
   const cityName = weddingConfig.venue.cityName || weddingConfig.venue.city;
   const locationUnderMap =
     weddingConfig.venue.locationUnderMap ||
-    `${cityName} · ${weddingConfig.date.short || weddingData.dateShort}`;
+    `${cityName} · 18th & 19th Dec 2026`;
 
   return (
     <section id="venue" className="relative overflow-hidden bg-[#A83B00] px-5 py-24 text-[#FFFDF5] sm:py-36">

@@ -19,8 +19,8 @@ export const IntroSection: React.FC = () => {
           <p className="font-telugu text-2xl sm:text-3xl md:text-4xl text-foreground/90 leading-relaxed font-normal">
             {weddingConfig.invitation.invitationLine || 'నూతన జీవితానికి నాంది పలుకుతూ...'}
           </p>
-          <h2 className="font-display text-4xl sm:text-6xl text-gold-foil animate-foil pt-1">
-            {weddingData.groom} &amp; {weddingData.bride}
+          <h2 className="font-telugu text-4xl sm:text-6xl md:text-7xl text-gold-foil animate-foil pt-1 font-normal">
+            హితేష్ &amp; నేహా
           </h2>
         </div>
 
